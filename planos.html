@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Planos – English Flow</title>
+  <style>
+    :root {
+      --blue: #bfe8f7;
+      --blue-strong: #5fb6d9;
+      --blue-deep: #3aa0c8;
+      --gray: #5f6b78;
+      --light-gray: #f2f6f9;
+      --white: #ffffff;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+    body { background-color: var(--light-gray); color: #1f2937; line-height: 1.6; }
+
+    nav {
+      position: sticky; top: 0; z-index: 1000;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    }
+
+    nav .nav-container {
+      max-width: 1100px; margin: auto; padding: 14px 20px;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+
+    nav a { text-decoration: none; color: var(--gray); font-weight: 500; margin-left: 20px; }
+    nav a:hover { color: var(--blue-deep); }
+
+    .cta {
+      background-color: var(--blue-deep);
+      color: var(--white) !important;
+      padding: 12px 26px;
+      border-radius: 30px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--blue), var(--blue-deep));
+      padding: 100px 20px;
+      text-align: center;
+    }
+
+    header h1 { font-size: 2.8rem; margin-bottom: 10px; }
+    header h2 { font-weight: 400; color: var(--light-gray); margin-bottom: 30px; }
+
+    section { padding: 90px 20px; max-width: 1100px; margin: auto; }
+    section h3 { font-size: 2.2rem; margin-bottom: 25px; }
+
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+
+    .card {
+      background: var(--white);
+      padding: 40px;
+      border-radius: 26px;
+      box-shadow: 0 16px 36px rgba(0,0,0,0.08);
+      position: relative;
+    }
+
+    .highlight {
+      border: 3px solid var(--blue-deep);
+      transform: scale(1.02);
+    }
+
+    footer { background: #0f172a; color: #dbeafe; text-align: center; padding: 50px 20px; }
+
+    ul { margin-top: 20px; padding-left: 18px; }
+    li { margin-bottom: 10px; }
+
+    .price { font-size: 2rem; color: var(--blue-deep); margin: 20px 0; }
+    .badge {
+      position: absolute; top: -14px; right: 20px;
+      background: var(--blue-deep); color: white;
+      padding: 6px 14px; border-radius: 20px; font-size: 0.8rem;
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-container">
+    <strong>English Flow</strong>
+    <div>
+      <a href="index.html">Início</a>
+      <a href="planos.html">Planos</a>
+      <a href="sobre.html">Sobre Nós</a>
+      <a href="dicas.html">Dicas</a>
+      <a href="teste-nivel.html">Teste de Nível</a>
+      <a href="contato.html" class="cta">Contato</a>
+    </div>
+  </div>
+</nav>
+
+<header>
+  <h1>Planos English Flow</h1>
+  <h2>Escolha o ritmo ideal para o seu inglês fluir</h2>
+</header>
+
+<section>
+  <h3>Planos Individuais</h3>
+  <div class="grid">
+
+    <div class="card">
+      <h4>Flow Essential</h4>
+      <p>Para quem deseja manter contato constante com o inglês.</p>
+      <div class="price">R$ 197 / mês</div>
+      <ul>
+        <li>1 aula por semana (30 min)</li>
+        <li>Foco em manutenção e revisão</li>
+        <li>Ideal para agendas cheias</li>
+      </ul>
+      <a href="contato.html" class="cta">Quero este plano</a>
+    </div>
+
+    <div class="card highlight">
+      <div class="badge">Mais recomendado</div>
+      <h4>Flow Immersion</h4>
+      <p>Para quem busca fluência e criação de hábito.</p>
+      <div class="price">R$ 347 / mês</div>
+      <ul>
+        <li>4 aulas por semana (30 min)</li>
+        <li>Contato diário com o idioma</li>
+        <li>Resultados mais rápidos</li>
+      </ul>
+      <a href="contato.html" class="cta">Quero este plano</a>
+    </div>
+
+    <div class="card">
+      <h4>Flow Progress</h4>
+      <p>Desenvolvimento consistente e seguro.</p>
+      <div class="price">R$ 257 / mês</div>
+      <ul>
+        <li>2 aulas por semana (30 min)</li>
+        <li>Equilíbrio entre estudo e conversação</li>
+        <li>Evolução contínua</li>
+      </ul>
+      <a href="contato.html" class="cta">Quero este plano</a>
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <h3>Planos Flexíveis e em Grupo</h3>
+  <div class="grid">
+
+    <div class="card">
+      <h4>Flow Flex</h4>
+      <p>Para agendas irregulares ou necessidades pontuais.</p>
+      <div class="price">R$ 227 / mês</div>
+      <ul>
+        <li>Aulas sob demanda</li>
+        <li>Horários variáveis</li>
+        <li>Ideal para quem viaja muito</li>
+      </ul>
+      <a href="contato.html" class="cta">Conversar sobre este plano</a>
+    </div>
+
+    <div class="card">
+      <h4>Flow Group</h4>
+      <p>Aulas em pequenos grupos (2 a 4 alunos).</p>
+      <div class="price">Sob consulta</div>
+      <ul>
+        <li>Valor reduzido por aluno</li>
+        <li>Interação e prática guiada</li>
+        <li>Grupos com nível semelhante</li>
+      </ul>
+      <a href="contato.html" class="cta">Tenho interesse</a>
+    </div>
+
+  </div>
+</section>
+
+<section style="text-align:center;">
+  <h3>Não sabe qual plano escolher?</h3>
+  <p>Faça o teste de nível ou agende uma aula diagnóstica.</p>
+  <a href="teste-nivel.html" class="cta" style="margin:10px; display:inline-block;">Fazer teste de nível</a>
+  <a href="contato.html" class="cta" style="margin:10px; display:inline-block;">Falar com o professor</a>
+</section>
+
+<footer>
+  © 2026 – English Flow | Professor Vinícius<br/>Todos os direitos reservados
+</footer>
+
+</body>
+</html>

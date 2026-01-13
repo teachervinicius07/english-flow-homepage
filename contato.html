@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contato – English Flow</title>
+  <style>
+    :root {
+      --blue: #bfe8f7;
+      --blue-strong: #5fb6d9;
+      --blue-deep: #3aa0c8;
+      --gray: #5f6b78;
+      --light-gray: #f2f6f9;
+      --white: #ffffff;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+    body { background-color: var(--light-gray); color: #1f2937; line-height: 1.7; }
+
+    nav {
+      position: sticky; top: 0; z-index: 1000;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    }
+
+    nav .nav-container {
+      max-width: 1100px; margin: auto; padding: 14px 20px;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+
+    nav a { text-decoration: none; color: var(--gray); font-weight: 500; margin-left: 20px; }
+    nav a:hover { color: var(--blue-deep); }
+
+    .cta {
+      background-color: var(--blue-deep);
+      color: var(--white) !important;
+      padding: 12px 28px;
+      border-radius: 30px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--blue), var(--blue-deep));
+      padding: 90px 20px;
+      text-align: center;
+    }
+
+    header h1 { font-size: 2.6rem; margin-bottom: 10px; }
+    header h2 { font-weight: 400; color: var(--light-gray); }
+
+    section { padding: 90px 20px; max-width: 1000px; margin: auto; }
+
+    .card {
+      background: var(--white);
+      padding: 50px;
+      border-radius: 28px;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.08);
+    }
+
+    form { max-width: 520px; margin: auto; }
+
+    label { display: block; margin-bottom: 6px; font-weight: 500; }
+    input {
+      width: 100%;
+      padding: 14px 16px;
+      margin-bottom: 22px;
+      border-radius: 12px;
+      border: 1px solid #d1d5db;
+      font-size: 1rem;
+    }
+
+    input:focus { outline: none; border-color: var(--blue-deep); }
+
+    .info {
+      margin-top: 40px;
+      text-align: center;
+      color: var(--gray);
+    }
+
+    .info p { margin-bottom: 10px; }
+
+    footer { background: #0f172a; color: #dbeafe; text-align: center; padding: 50px 20px; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-container">
+    <strong>English Flow</strong>
+    <div>
+      <a href="index.html">Início</a>
+      <a href="planos.html">Planos</a>
+      <a href="sobre.html">Sobre Nós</a>
+      <a href="dicas.html">Dicas</a>
+      <a href="teste-nivel.html">Teste de Nível</a>
+      <a href="contato.html" class="cta">Contato</a>
+    </div>
+  </div>
+</nav>
+
+<header>
+  <h1>Vamos conversar</h1>
+  <h2>Sem compromisso, sem pressão. Apenas clareza.</h2>
+</header>
+
+<section>
+  <div class="card">
+    <form>
+      <label for="nome">Nome completo</label>
+      <input type="text" id="nome" name="nome" placeholder="Seu nome" required />
+
+      <label for="telefone">Telefone / WhatsApp</label>
+      <input type="tel" id="telefone" name="telefone" placeholder="(xx) xxxxx-xxxx" required />
+
+      <label for="email">E-mail</label>
+      <input type="email" id="email" name="email" placeholder="seu@email.com" required />
+
+      <div style="text-align:center; margin-top:20px;">
+        <button type="submit" class="cta">Quero saber mais</button>
+      </div>
+    </form>
+
+    <div class="info">
+      <p>Prefere contato direto?</p>
+      <p><strong>WhatsApp:</strong> +55 15 98457-544</p>
+      <p><strong>Instagram:</strong> @teacher_esl</p>
+      <p><strong>E-mail:</strong> teacher_esl@hotmail.com</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2026 – English Flow | Professor Vinícius<br/>Responderemos o mais breve possível
+</footer>
+
+</body>
+</html>

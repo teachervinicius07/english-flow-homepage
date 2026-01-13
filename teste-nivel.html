@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Teste de Nível – English Flow</title>
+  <style>
+    :root {
+      --blue: #bfe8f7;
+      --blue-strong: #5fb6d9;
+      --blue-deep: #3aa0c8;
+      --gray: #5f6b78;
+      --light-gray: #f2f6f9;
+      --white: #ffffff;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+    body { background-color: var(--light-gray); color: #1f2937; line-height: 1.6; }
+
+    nav {
+      position: sticky; top: 0; z-index: 1000;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    }
+
+    nav .nav-container {
+      max-width: 1100px; margin: auto; padding: 14px 20px;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+
+    nav a { text-decoration: none; color: var(--gray); font-weight: 500; margin-left: 20px; }
+    nav a:hover { color: var(--blue-deep); }
+
+    .cta {
+      background-color: var(--blue-deep);
+      color: var(--white) !important;
+      padding: 12px 26px;
+      border-radius: 30px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+    }
+
+    section { padding: 90px 20px; max-width: 900px; margin: auto; }
+    h1 { font-size: 2.4rem; margin-bottom: 10px; text-align: center; }
+    h2 { font-weight: 400; color: var(--gray); margin-bottom: 40px; text-align: center; }
+
+    .card {
+      background: var(--white);
+      padding: 40px;
+      border-radius: 24px;
+      box-shadow: 0 16px 36px rgba(0,0,0,0.08);
+    }
+
+    .progress-wrapper { margin-bottom: 30px; }
+    .progress-label { display: flex; justify-content: space-between; font-size: 0.9rem; margin-bottom: 6px; }
+    .progress-bar-bg { background: #e5e7eb; border-radius: 10px; overflow: hidden; }
+    .progress-bar { height: 10px; width: 0%; background: var(--blue-strong); transition: width .3s ease; }
+
+    .options label { display: block; margin: 14px 0; cursor: pointer; }
+
+    footer { background: #0f172a; color: #dbeafe; text-align: center; padding: 40px 20px; margin-top: 80px; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-container">
+    <strong>English Flow</strong>
+    <div>
+      <a href="index.html">Início</a>
+      <a href="planos.html">Planos</a>
+      <a href="sobre.html">Sobre Nós</a>
+      <a href="dicas.html">Dicas</a>
+      <a href="teste-nivel.html">Teste de Nível</a>
+      <a href="contato.html" class="cta">Contato</a>
+    </div>
+  </div>
+</nav>
+
+<section>
+  <h1>Teste de Nível de Inglês</h1>
+  <h2>Avaliação rápida e indicativa do A1 ao C2</h2>
+
+  <div class="card">
+
+    <div class="progress-wrapper">
+      <div class="progress-label">
+        <span>Progresso</span>
+        <span id="progressText">0%</span>
+      </div>
+      <div class="progress-bar-bg">
+        <div id="progressBar" class="progress-bar"></div>
+      </div>
+    </div>
+
+    <div id="questionContainer"></div>
+
+    <div style="text-align:right; margin-top:30px;">
+      <button id="nextBtn" class="cta">Avançar</button>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  © 2026 – English Flow | Professor Vinícius<br/>Este teste é apenas indicativo e não substitui avaliação diagnóstica
+</footer>
+
+<script>
+const questions = [
+ {q:"I ___ a student.", options:["am","is","are","be"], answer:0},
+ {q:"She works ___ a hospital.", options:["in","on","at","to"], answer:2},
+ {q:"Yesterday we ___ a movie.", options:["watch","watched","have watched","were watching"], answer:1},
+ {q:"If it ___ tomorrow, we will stay home.", options:["will rain","rains","rained","has rained"], answer:1},
+ {q:"This is the best book I ___ read.", options:["ever","have ever","had ever","was ever"], answer:1},
+ {q:"Rarely ___ such dedication.", options:["I have seen","have I seen","I saw","did I see"], answer:1},
+ {q:"The plan failed ___ initial support.", options:["despite","although","because","however"], answer:0},
+ {q:"The explanation was barely ___.", options:["comprehensible","comprehensive","compatible","convenient"], answer:0},
+ {q:"She spoke candidly means:", options:["indirectly","honestly","politely","cautiously"], answer:1},
+ {q:"Hardly ___ the meeting started when it failed.", options:["had","has","did","was"], answer:0}
+];
+
+let current = 0;
+let score = 0;
+const container = document.getElementById('questionContainer');
+const progressBar = document.getElementById('progressBar');
+const progressText = document.getElementById('progressText');
+const nextBtn = document.getElementById('nextBtn');
+
+function renderQuestion() {
+  const q = questions[current];
+  const percent = Math.round((current / questions.length) * 100);
+  progressBar.style.width = percent + '%';
+  progressText.textContent = percent + '%';
+
+  container.innerHTML = `<h3>${q.q}</h3>` + q.options.map((o,i)=>
+    `<label><input type="radio" name="option" value="${i}" /> ${o}</label>`
+  ).join('');
+}
+
+nextBtn.onclick = () => {
+  const selected = document.querySelector('input[name=option]:checked');
+  if(!selected) { alert('Selecione uma opção'); return; }
+  if(+selected.value === questions[current].answer) score++;
+  current++;
+  current < questions.length ? renderQuestion() : showResult();
+}
+
+function showResult() {
+  progressBar.style.width = '100%';
+  progressText.textContent = '100%';
+
+  let level = score <= 2 ? 'A1 – Iniciante'
+            : score <= 4 ? 'A2 – Básico'
+            : score <= 6 ? 'B1/B2 – Intermediário'
+            : score <= 8 ? 'C1 – Avançado'
+            : 'C2 – Proficiência';
+
+  container.innerHTML = `
+    <h3>Resultado</h3>
+    <p>Você acertou <strong>${score}</strong> de <strong>${questions.length}</strong> perguntas.</p>
+    <p><strong>Nível estimado:</strong> ${level}</p>
+    <p style="margin-top:20px;">Quer uma avaliação mais precisa?</p>
+    <a href="contato.html" class="cta">Agendar aula diagnóstica</a>
+  `;
+  nextBtn.style.display = 'none';
+}
+
+renderQuestion();
+</script>
+
+</body>
+</html>

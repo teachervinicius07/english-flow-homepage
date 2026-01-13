@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sobre – English Flow</title>
+  <style>
+    :root {
+      --blue: #bfe8f7;
+      --blue-strong: #5fb6d9;
+      --blue-deep: #3aa0c8;
+      --gray: #5f6b78;
+      --light-gray: #f2f6f9;
+      --white: #ffffff;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+    body { background-color: var(--light-gray); color: #1f2937; line-height: 1.7; }
+
+    nav {
+      position: sticky; top: 0; z-index: 1000;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    }
+
+    nav .nav-container {
+      max-width: 1100px; margin: auto; padding: 14px 20px;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+
+    nav a { text-decoration: none; color: var(--gray); font-weight: 500; margin-left: 20px; }
+    nav a:hover { color: var(--blue-deep); }
+
+    .cta {
+      background-color: var(--blue-deep);
+      color: var(--white) !important;
+      padding: 12px 26px;
+      border-radius: 30px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--blue), var(--blue-deep));
+      padding: 90px 20px;
+      text-align: center;
+    }
+
+    header h1 { font-size: 2.6rem; margin-bottom: 10px; }
+    header h2 { font-weight: 400; color: var(--light-gray); }
+
+    section { padding: 90px 20px; max-width: 1000px; margin: auto; }
+    section h3 { font-size: 2.2rem; margin-bottom: 25px; }
+
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+
+    .card {
+      background: var(--white);
+      padding: 40px;
+      border-radius: 26px;
+      box-shadow: 0 16px 36px rgba(0,0,0,0.08);
+    }
+
+    ul { margin-top: 20px; padding-left: 20px; }
+    li { margin-bottom: 12px; }
+
+    footer { background: #0f172a; color: #dbeafe; text-align: center; padding: 50px 20px; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-container">
+    <strong>English Flow</strong>
+    <div>
+      <a href="index.html">Início</a>
+      <a href="planos.html">Planos</a>
+      <a href="sobre.html">Sobre Nós</a>
+      <a href="dicas.html">Dicas</a>
+      <a href="teste-nivel.html">Teste de Nível</a>
+      <a href="contato.html" class="cta">Contato</a>
+    </div>
+  </div>
+</nav>
+
+<header>
+  <h1>Sobre o English Flow</h1>
+  <h2>Clareza, constância e propósito no aprendizado de inglês</h2>
+</header>
+
+<section>
+  <h3>Quem está por trás do English Flow</h3>
+  <div class="grid">
+    <div class="card">
+      <p>Sou <strong>Vinícius</strong>, engenheiro mecatrônico por formação e professor de inglês por vocação. Ao longo da minha trajetória, vivi o inglês tanto como aluno quanto como educador, o que me permitiu compreender profundamente as dificuldades, frustrações e expectativas de quem estuda o idioma na vida adulta.</p>
+      <p>Possuo <strong>certificação Cambridge FCE – nível C1</strong> e mais de <strong>4 anos de experiência</strong> ensinando inglês para adultos, principalmente em contextos profissionais, acadêmicos e de exames de proficiência.</p>
+    </div>
+    <div class="card">
+      <p>Minha experiência inclui passagem por escolas tradicionais como <strong>Kumon</strong> e <strong>King of Languages</strong>, além do trabalho independente, onde desenvolvi um método próprio focado em estrutura, repetição consciente e acompanhamento real do progresso.</p>
+      <p>Também tive a oportunidade de auxiliar alunos em contextos acadêmicos internacionais, como a preparação e revisão de relatórios de pós-graduação no exterior.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h3>Minha abordagem de ensino</h3>
+  <div class="grid">
+    <div class="card">
+      <ul>
+        <li>Aulas curtas e frequentes (30 minutos), respeitando a rotina acelerada do adulto.</li>
+        <li>Foco equilibrado em vocabulário, gramática, pronúncia e conversação.</li>
+        <li>Revisão constante como ferramenta central de aprendizado.</li>
+        <li>Estrutura clara de aula e acompanhamento do progresso.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <p>Acredito que fluência não vem de aulas longas e esporádicas, mas de <strong>contato frequente, consistente e bem direcionado</strong> com o idioma.</p>
+      <p>Meu papel é atuar como professor e orientador, ajudando o aluno a construir segurança, autonomia e clareza no uso do inglês.</p>
+    </div>
+  </div>
+</section>
+
+<section style="text-align:center;">
+  <h3>Vamos conversar?</h3>
+  <p>Se você busca um aprendizado estruturado, honesto e adaptado à sua realidade, será um prazer te orientar.</p>
+  <a href="teste-nivel.html" class="cta" style="margin:10px; display:inline-block;">Fazer teste de nível</a>
+  <a href="contato.html" class="cta" style="margin:10px; display:inline-block;">Entrar em contato</a>
+</section>
+
+<footer>
+  © 2026 – English Flow | Professor Vinícius<br/>Todos os direitos reservados
+</footer>
+
+</body>
+</html>
