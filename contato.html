@@ -83,6 +83,57 @@
     .info p { margin-bottom: 10px; }
 
     footer { background: #0f172a; color: #dbeafe; text-align: center; padding: 50px 20px; }
+
+    /* Modal (pop-up) */
+    .modal-backdrop{
+      position: fixed; inset: 0;
+      background: rgba(15, 23, 42, 0.55);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .modal{
+      width: 100%;
+      max-width: 520px;
+      background: var(--white);
+      border-radius: 26px;
+      box-shadow: 0 22px 60px rgba(0,0,0,0.25);
+      padding: 34px;
+      position: relative;
+      transform: translateY(8px);
+      opacity: 0;
+      transition: .18s ease;
+    }
+    .modal-backdrop.show{ display:flex; }
+    .modal-backdrop.show .modal{ transform: translateY(0); opacity: 1; }
+
+    .modal h3{ font-size: 1.5rem; margin-bottom: 10px; }
+    .modal p{ color: var(--gray); margin-bottom: 18px; }
+    .modal-actions{ display:flex; gap:12px; justify-content:flex-end; flex-wrap:wrap; }
+    .secondary{
+      background: transparent;
+      border: 1px solid #d1d5db;
+      color: #111827 !important;
+      padding: 12px 18px;
+      border-radius: 30px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .modal-close{
+      position:absolute; top: 14px; right: 16px;
+      width: 40px; height: 40px;
+      border-radius: 999px;
+      border: 1px solid #e5e7eb;
+      background: #fff;
+      cursor: pointer;
+      font-size: 18px;
+      line-height: 1;
+    }
+
+    /* Loading state */
+    .cta[disabled]{ opacity: .65; cursor: not-allowed; }
+
   </style>
 </head>
 <body>
@@ -108,7 +159,7 @@
 
 <section>
   <div class="card">
-    <form>
+    <form id="contactForm" action="https://formspree.io/f/mgooebpv" method="POST">
       <label for="nome">Nome completo</label>
       <input type="text" id="nome" name="nome" placeholder="Seu nome" required />
 
@@ -121,6 +172,7 @@
       <div style="text-align:center; margin-top:20px;">
         <button type="submit" class="cta">Quero saber mais</button>
       </div>
+      <p style="font-size:0.85rem; color:#6b7280; margin-top:14px; text-align:center;">Ao enviar, você concorda em ser contatado por WhatsApp/e-mail. Seus dados serão usados apenas para contato e não serão compartilhados.</p>
     </form>
 
     <div class="info">
@@ -135,6 +187,91 @@
 <footer>
   © 2026 – English Flow | Professor Vinícius<br/>Responderemos o mais breve possível
 </footer>
+
+
+<!-- Modal de confirmação -->
+<div id="modalBackdrop" class="modal-backdrop" aria-hidden="true">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button class="modal-close" id="modalClose" aria-label="Fechar">×</button>
+    <h3 id="modalTitle">✅ Enviado com sucesso!</h3>
+    <p id="modalMessage">Recebi seus dados. Em breve entrarei em contato pelo WhatsApp ou e-mail.</p>
+    <div class="modal-actions">
+      <a href="index.html" class="secondary" id="modalHome">Voltar ao início</a>
+      <a href="teste-nivel.html" class="cta" id="modalTest">Fazer teste de nível</a>
+    </div>
+  </div>
+</div>
+
+<script>
+  // --- CONFIGURAÇÃO ---
+  // Substitua o action do form pelo endpoint do Formspree:
+  // https://formspree.io/f/SEU_ID_AQUI
+
+  const form = document.getElementById('contactForm');
+  const submitBtn = form.querySelector('button[type="submit"]');
+
+  const backdrop = document.getElementById('modalBackdrop');
+  const modalClose = document.getElementById('modalClose');
+
+  function openModal(message) {
+    if (message) document.getElementById('modalMessage').textContent = message;
+    backdrop.classList.add('show');
+    backdrop.setAttribute('aria-hidden', 'false');
+  }
+
+  function closeModal() {
+    backdrop.classList.remove('show');
+    backdrop.setAttribute('aria-hidden', 'true');
+  }
+
+  // Fechar ao clicar fora
+  backdrop.addEventListener('click', (e) => {
+    if (e.target === backdrop) closeModal();
+  });
+
+  modalClose.addEventListener('click', closeModal);
+
+  // Fechar com ESC
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && backdrop.classList.contains('show')) closeModal();
+  });
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    // validação básica (HTML5 já faz, mas reforçamos)
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
+    // estado de envio
+    const originalText = submitBtn.textContent;
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Enviando...';
+
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (res.ok) {
+        form.reset();
+        openModal('Recebi seus dados. Em breve entrarei em contato pelo WhatsApp ou e-mail.');
+      } else {
+        openModal('Não consegui enviar agora. Por favor, tente novamente ou fale comigo direto no WhatsApp.');
+      }
+    } catch (err) {
+      openModal('Parece que houve um problema de conexão. Tente novamente ou fale comigo direto no WhatsApp.');
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = originalText;
+    }
+  });
+</script>
+
 
 </body>
 </html>
