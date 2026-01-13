@@ -1,0 +1,31 @@
+:root {
+  /* Azul claro – fundos suaves, muito próximo ao brilho do logo */
+  --blue: #dff3fb;
+
+  /* Azul vivo – movimentos, hovers, barras, destaques */
+  --blue-strong: #3fb3e6;
+
+  /* Azul principal da marca – CTA, headers, links */
+  --blue-deep: #1e88c9;
+
+  /* Cinza frio levemente azulado – texto secundário */
+  --gray: #4a6476;
+
+  /* Fundo geral – branco frio */
+  --light-gray: #f5f9fc;
+
+  /* Branco puro */
+  --white: #ffffff;
+}
+
+header {
+  background: linear-gradient(135deg, var(--blue), var(--blue-deep));
+  padding: 100px 20px;
+  text-align: center;
+}
+
+footer {
+  background: var(--blue-deep);
+  padding: 100px 20px;
+  text-align: center;
+}
