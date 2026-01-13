@@ -25,7 +25,15 @@ header {
 }
 
 footer {
-  background: var(--blue-deep);
+  background: linear-gradient(135deg, var(--blue), var(--blue-deep));
   padding: 100px 20px;
   text-align: center;
+}
+
+.cta {
+  background: linear-gradient(200deg, var(--blue-deep), var(--blue));
+  color: var(--white) !important;
+  padding: 12px 26px;
+  border-radius: 30px;
+  font-weight: 600;
 }
