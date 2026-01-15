@@ -6,9 +6,7 @@
   <title>English Flow – Professor Vinícius</title>
   <link rel="stylesheet" href="css/style.css">
   <style>
-
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-
     body { background-color: var(--light-gray); color: #1f2937; line-height: 1.6; }
 
     nav {
@@ -17,35 +15,176 @@
       backdrop-filter: blur(8px);
       box-shadow: 0 4px 16px rgba(0,0,0,0.06);
     }
-
     nav .nav-container {
       max-width: 1100px; margin: auto; padding: 14px 20px;
       display: flex; justify-content: space-between; align-items: center;
     }
-
     nav a { text-decoration: none; color: var(--gray); font-weight: 500; margin-left: 20px; }
     nav a:hover { color: var(--blue-deep); }
 
-    header h1 { font-size: 2.8rem; margin-bottom: 10px; }
-    header h2 { font-weight: 400; color: var(--light-gray); margin-bottom: 30px; }
-
-    section {
-      padding: 90px 20px;
-      max-width: 1100px;
-      margin: auto;
+    .cta {
+      background-color: var(--blue-deep);
+      color: var(--white) !important;
+      padding: 12px 26px;
+      border-radius: 30px;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      box-shadow: 0 14px 30px rgba(0,0,0,0.12);
+    }
+    .cta:hover { filter: brightness(0.98); transform: translateY(-1px); transition: .15s ease; }
+    .cta.secondary {
+      background: rgba(255,255,255,0.85);
+      color: #0f172a !important;
+      border: 1px solid rgba(15,23,42,0.12);
+      box-shadow: 0 14px 30px rgba(0,0,0,0.08);
     }
 
-    section h3 { font-size: 2.2rem; margin-bottom: 25px; }
+    header {
+      background: linear-gradient(135deg, var(--blue), var(--blue-deep));
+      padding: 92px 20px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    header::before{
+      content:"";
+      position:absolute; inset:-120px -80px auto auto;
+      width: 420px; height: 420px;
+      background: radial-gradient(circle at center, rgba(255,255,255,0.45), rgba(255,255,255,0));
+      transform: rotate(18deg);
+      pointer-events:none;
+    }
+    header::after{
+      content:"";
+      position:absolute; inset:auto auto -140px -90px;
+      width: 520px; height: 520px;
+      background: radial-gradient(circle at center, rgba(255,255,255,0.22), rgba(255,255,255,0));
+      transform: rotate(-10deg);
+      pointer-events:none;
+    }
 
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+    header h1 { font-size: 2.8rem; margin: 14px 0 10px; }
+    header h2 { font-weight: 400; color: var(--light-gray); margin-bottom: 26px; }
 
+    .hero-sub {
+      max-width: 68ch;
+      margin: 0 auto 26px;
+      color: rgba(255,255,255,0.92);
+      font-size: 1.05rem;
+    }
+    .hero-actions{ display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+
+    section { padding: 88px 20px; max-width: 1100px; margin: auto; }
+    section h3 { font-size: 2.2rem; margin-bottom: 22px; }
+    .muted { color: var(--gray); }
+
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 26px; }
     .card {
       background: var(--white);
-      padding: 35px;
+      padding: 34px;
       border-radius: 22px;
       box-shadow: 0 12px 28px rgba(0,0,0,0.06);
     }
 
+    .kicker{
+      display:inline-block;
+      font-weight: 800;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      font-size: .78rem;
+      color: rgba(15,23,42,0.65);
+      background: rgba(255,255,255,0.55);
+      border: 1px solid rgba(15,23,42,0.08);
+      padding: 8px 12px;
+      border-radius: 999px;
+      margin-bottom: 14px;
+    }
+
+    .checklist{ margin-top: 14px; padding-left: 18px; }
+    .checklist li{ margin: 10px 0; }
+
+    .quote{
+      border-left: 4px solid var(--blue-deep);
+      padding-left: 16px;
+      color: #111827;
+    }
+    .quote small{ display:block; margin-top: 10px; color: var(--gray); }
+
+    .split{
+      display:grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 26px;
+      align-items: stretch;
+    }
+    .hero-illustration{
+      background: linear-gradient(135deg, rgba(255,255,255,0.66), rgba(255,255,255,0.35));
+      border: 1px solid rgba(255,255,255,0.55);
+      border-radius: 26px;
+      padding: 26px;
+      box-shadow: 0 16px 36px rgba(0,0,0,0.08);
+      position: relative;
+      overflow:hidden;
+    }
+    .hero-illustration .img-slot{
+      height: 100%;
+      min-height: 220px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, rgba(15,23,42,0.06), rgba(15,23,42,0.02));
+      border: 1px dashed rgba(15,23,42,0.18);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding: 18px;
+      color: rgba(15,23,42,0.62);
+      font-weight: 700;
+    }
+
+    .mini{
+      display:flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items:center;
+      margin-top: 14px;
+      color: rgba(255,255,255,0.92);
+      justify-content:center;
+    }
+    .mini span{
+      background: rgba(255,255,255,0.16);
+      border: 1px solid rgba(255,255,255,0.20);
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: .92rem;
+    }
+
+    .cta-band{
+      background: #0f172a;
+      color: #dbeafe;
+      border-radius: 26px;
+      padding: 34px;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.14);
+      display:flex;
+      gap: 18px;
+      align-items:center;
+      justify-content:space-between;
+      flex-wrap:wrap;
+    }
+    .cta-band h3{ margin:0; color:#fff; font-size: 1.8rem; }
+    .cta-band p{ margin: 6px 0 0; color: rgba(219,234,254,0.9); max-width: 70ch; }
+
+    footer { background: #0f172a; color: #dbeafe; text-align: center; padding: 50px 20px; }
+
+    @media (max-width: 860px){
+      .split{ grid-template-columns: 1fr; }
+      header h1{ font-size: 2.35rem; }
+    }
   </style>
 </head>
 <body>
@@ -65,34 +204,193 @@
 </nav>
 
 <header>
-  <img src="images/logo.png" alt="English Flow Logo" style="max-width:420px; margin-bottom:0px;" />
-  <h1>Professor Vinícius – English Flow</h1>
-  <h2>Get your English flowing</h2>
-  <a href="teste-nivel.html" class="cta">Descubra seu nível de inglês</a>
+  <div class="split" style="max-width:1100px; margin:0 auto;">
+    <div style="position:relative; z-index:2; text-align:left;">
+      <span class="kicker">Aulas online para adultos</span>
+      <h1>Get your English flowing.</h1>
+      <h2 style="margin-bottom:14px;">Inglês estruturado para estudos e carreira</h2>
+      <p class="hero-sub" style="margin-left:0;">
+        Aulas curtas, frequentes e objetivas — para você construir vocabulário, gramática e conversação
+        com clareza e constância, mesmo com rotina acelerada.
+      </p>
+
+      <div class="hero-actions" style="justify-content:flex-start;">
+        <a href="teste-nivel.html" class="cta">Fazer teste de nível</a>
+        <a href="contato.html" class="cta secondary">Falar comigo</a>
+      </div>
+
+      <div class="mini" style="justify-content:flex-start;">
+        <span>Cambridge C1</span>
+        <span>Adultos • Brasil & Portugal</span>
+        <span>Aulas 30 min</span>
+      </div>
+    </div>
+
+    <div class="hero-illustration" style="position:relative; z-index:2;">
+      <div class="img-slot">
+        SLOT DE IMAGEM / ILUSTRAÇÃO<br>
+        (insira uma imagem inspiradora aqui)
+      </div>
+      <p style="margin-top:14px; color: rgba(15,23,42,0.62); font-weight:600;">
+        Dica: use uma imagem de pessoas estudando / ambiente profissional / exterior.
+      </p>
+    </div>
+  </div>
 </header>
 
+<!-- 1) Isso é para quem? -->
 <section>
-  <h3>Aprenda inglês com clareza, constância e propósito</h3>
+  <span class="kicker">Isso é para você?</span>
+  <h3>Para quem quer usar inglês de verdade</h3>
   <div class="grid">
     <div class="card">
-      <p>Ajudo profissionais e estudantes a atingirem um excelente nível de comunicação e expressão em inglês.</p>
-      <p>Método estruturado, acompanhamento real e foco em vocabulário, gramática e fluência.</p>
+      <h4 style="margin-bottom:10px;">Este curso é para você se…</h4>
+      <ul class="checklist">
+        <li>Já estudou inglês, mas sente dificuldade para <strong>usar</strong> no dia a dia.</li>
+        <li>Quer melhorar para <strong>trabalho</strong>, <strong>estudos</strong> ou provas de proficiência.</li>
+        <li>Tem pouco tempo e precisa de um plano <strong>curto, frequente e consistente</strong>.</li>
+        <li>Prefere estrutura e direção — não “conversa solta” sem progresso.</li>
+      </ul>
     </div>
     <div class="card">
-      <p><strong>Certificação Cambridge C1</strong></p>
-      <p>Experiência com inglês acadêmico, profissional e exames de proficiência.</p>
+      <h4 style="margin-bottom:10px;">O que você pode esperar</h4>
+      <p class="muted">
+        Um caminho claro: você entende <strong>o que está treinando</strong>, por que está treinando e como evoluir.
+        A sensação é de “mapa” — não de tentativa e erro.
+      </p>
+      <ul class="checklist">
+        <li>Clareza (sem enrolação)</li>
+        <li>Constância (sem sobrecarga)</li>
+        <li>Progresso mensurável (sem achismos)</li>
+      </ul>
     </div>
     <div class="card">
-      <p>Aulas online, individuais ou em grupo, pensadas para adultos com rotina acelerada.</p>
+      <h4 style="margin-bottom:10px;">Para quem não é</h4>
+      <p class="muted">
+        Se você busca “milagre rápido”, talvez não seja a melhor proposta.
+        Aqui o foco é construir fluência com base sólida e uso real — no seu ritmo, com consistência.
+      </p>
     </div>
   </div>
 </section>
 
-<section style="text-align:center;">
-  <h3>Por onde você quer começar?</h3>
-  <a href="planos.html" class="cta" style="margin:10px; display:inline-block;">Ver planos</a>
-  <a href="sobre.html" class="cta" style="margin:10px; display:inline-block;">Conhecer o método</a>
-  <a href="teste-nivel.html" class="cta" style="margin:10px; display:inline-block;">Fazer teste de nível</a>
+<!-- 2) Diferenciais -->
+<section>
+  <span class="kicker">Diferenciais</span>
+  <h3>Estrutura que transforma esforço em progresso</h3>
+  <div class="grid">
+    <div class="card">
+      <h4 style="margin-bottom:10px;">Método (sem improviso)</h4>
+      <p class="muted">
+        Aulas estruturadas: revisão de vocabulário, prática guiada e conversação com propósito.
+        Você sai sabendo o que revisar e como avançar.
+      </p>
+    </div>
+    <div class="card">
+      <h4 style="margin-bottom:10px;">Experiência real</h4>
+      <p class="muted">
+        Experiência com inglês acadêmico, profissional e exames de proficiência — inclusive apoio em relatórios de pós-graduação no exterior.
+      </p>
+    </div>
+    <div class="card">
+      <h4 style="margin-bottom:10px;">Acompanhamento claro</h4>
+      <p class="muted">
+        Revisões constantes, organização do conteúdo e checkpoints de progresso.
+        Você não fica perdido — você sabe onde está e para onde vai.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- 3) Prova social -->
+<section>
+  <span class="kicker">Depoimentos</span>
+  <h3>O que os alunos dizem</h3>
+  <div class="grid">
+    <div class="card">
+      <div class="quote">
+        “Me ajudou muito com meus relatórios de pós-graduação, me sinto muito grata.”
+        <small>— Isabella Duarte</small>
+      </div>
+    </div>
+    <div class="card">
+      <div class="quote">
+        “Hoje entendo muito melhor os meus animes e videoaulas em inglês.”
+        <small>— Gabriel Kewen</small>
+      </div>
+    </div>
+    <div class="card">
+      <div class="quote">
+        “Um excelente profissional, muito atencioso e prestativo.”
+        <small>— Sandro Vera</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4) Caminhos claros -->
+<section>
+  <span class="kicker">Comece por aqui</span>
+  <h3>Escolha o seu próximo passo</h3>
+  <div class="grid">
+    <div class="card">
+      <h4 style="margin-bottom:10px;">📊 Teste de nível</h4>
+      <p class="muted">Descubra um nível estimado do A1 ao C2 e use isso como ponto de partida.</p>
+      <div style="margin-top:16px;">
+        <a href="teste-nivel.html" class="cta">Fazer teste de nível</a>
+      </div>
+    </div>
+    <div class="card">
+      <h4 style="margin-bottom:10px;">📘 Planos</h4>
+      <p class="muted">Veja os pacotes e escolha o formato que melhor encaixa na sua rotina.</p>
+      <div style="margin-top:16px;">
+        <a href="planos.html" class="cta">Ver planos</a>
+      </div>
+    </div>
+    <div class="card">
+      <h4 style="margin-bottom:10px;">🧠 Dicas</h4>
+      <p class="muted">Um feed em formato de blog com reflexões e comparações éticas para aprender melhor.</p>
+      <div style="margin-top:16px;">
+        <a href="dicas.html" class="cta">Ver feed de dicas</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5) Quem é o professor (breve) -->
+<section>
+  <span class="kicker">Sobre o professor</span>
+  <h3>Prazer, eu sou o Vinícius</h3>
+  <div class="grid">
+    <div class="card" style="grid-column: 1 / -1;">
+      <p class="muted" style="max-width: 85ch;">
+        Sou Vinícius, engenheiro por formação e professor de inglês por vocação, com certificação <strong>Cambridge C1</strong>.
+        Trabalho principalmente com adultos, focando em comunicação para vida profissional, estudos e exames de proficiência.
+        A proposta do English Flow é simples: <strong>estrutura + constância</strong> para transformar esforço em progresso real.
+      </p>
+      <p class="muted" style="margin-top:12px;">
+        Quer uma orientação rápida para escolher o melhor plano? Podemos conversar sem compromisso.
+      </p>
+      <div style="margin-top:16px;">
+        <a href="contato.html" class="cta">Falar comigo</a>
+        <a href="sobre.html" class="cta secondary" style="margin-left:10px;">Ver “Sobre Nós”</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6) CTA final -->
+<section>
+  <div class="cta-band">
+    <div>
+      <h3>Pronto para destravar seu inglês?</h3>
+      <p>Faça o teste de nível ou me envie seus dados para eu te orientar no plano ideal.</p>
+    </div>
+    <div style="display:flex; gap:12px; flex-wrap:wrap;">
+      <a href="teste-nivel.html" class="cta">Fazer teste</a>
+      <a href="contato.html" class="cta secondary">Entrar em contato</a>
+    </div>
+  </div>
 </section>
 
 <footer>
