@@ -3,6 +3,8 @@
     "id": "frequencia-vence-intensidade",
     "title": "Frequência vence intensidade",
     "date": "2026-01-15",
+    "image": "images/posts/meu-post.jpg",
+    "image_alt": "Descrição da imagem",
     "tags": [
       "método",
       "rotina",
@@ -15,6 +17,8 @@
     "id": "repeticao-nao-e-retrocesso",
     "title": "Repetição não é retrocesso",
     "date": "2026-01-10",
+    "image": "images/posts/meu-post.jpg",
+    "image_alt": "Descrição da imagem",
     "tags": [
       "método",
       "vocabulário",
@@ -27,6 +31,8 @@
     "id": "escolas-o-que-fazem-bem",
     "title": "Escolas tradicionais: o que fazem muito bem",
     "date": "2026-01-08",
+    "image": "images/posts/meu-post.jpg",
+    "image_alt": "Descrição da imagem",
     "tags": [
       "escolas",
       "disciplina",
@@ -39,6 +45,8 @@
     "id": "limites-do-modelo-tradicional",
     "title": "Onde o modelo tradicional limita",
     "date": "2026-01-05",
+    "image": "images/posts/meu-post.jpg",
+    "image_alt": "Descrição da imagem",
     "tags": [
       "escolas",
       "adultos",
@@ -51,6 +59,8 @@
     "id": "diferencial-aula-particular",
     "title": "O diferencial das aulas particulares",
     "date": "2026-01-02",
+    "image": "images/posts/meu-post.jpg",
+    "image_alt": "Descrição da imagem",
     "tags": [
       "escolas",
       "custo-benefício",
@@ -63,6 +73,8 @@
     "id": "ingles-no-brasil-ganhos-e-oportunidades",
     "title": "Por que estudar inglês no Brasil (mesmo sem sair do país)",
     "date": "2026-01-15",
+    "image": "images/posts/meu-post.jpg",
+    "image_alt": "Descrição da imagem",
     "tags": [
       "carreira",
       "oportunidades",
@@ -76,6 +88,8 @@
     "id": "idiomas-e-saude-do-cerebro",
     "title": "Idiomas e saúde do cérebro: o que a ciência sugere (sem exageros)",
     "date": "2026-01-15",
+    "image": "images/posts/meu-post.jpg",
+    "image_alt": "Descrição da imagem",
     "tags": [
       "saúde",
       "cérebro",
@@ -89,6 +103,8 @@
     "id": "por-que-professor-particular-acelera",
     "title": "Por que professor particular acelera seu inglês (e pode sair mais econômico)",
     "date": "2026-01-15",
+    "image": "images/posts/meu-post.jpg",
+    "image_alt": "Descrição da imagem",
     "tags": [
       "metodologia",
       "aulas",

@@ -6,7 +6,6 @@
   <title>Dicas – English Flow</title>
   <link rel="stylesheet" href="css/style.css">
   <style>
-
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
     body { background-color: var(--light-gray); color: #1f2937; line-height: 1.7; }
 
@@ -16,12 +15,10 @@
       backdrop-filter: blur(8px);
       box-shadow: 0 4px 16px rgba(0,0,0,0.06);
     }
-
     nav .nav-container {
       max-width: 1100px; margin: auto; padding: 14px 20px;
       display: flex; justify-content: space-between; align-items: center;
     }
-
     nav a { text-decoration: none; color: var(--gray); font-weight: 500; margin-left: 20px; }
     nav a:hover { color: var(--blue-deep); }
 
@@ -45,7 +42,6 @@
       padding: 90px 20px;
       text-align: center;
     }
-
     header h1 { font-size: 2.6rem; margin-bottom: 10px; }
     header h2 { font-weight: 400; color: var(--light-gray); }
 
@@ -55,26 +51,17 @@
     footer { background: #0f172a; color: #dbeafe; text-align: center; padding: 50px 20px; }
 
     /* =========================
-       FEED (BLOG) – novidades
+       FEED (notícias/blog)
        ========================= */
     .feed-header{
-      display:flex;
-      flex-wrap:wrap;
-      gap:14px;
-      align-items:center;
-      justify-content:space-between;
+      display:flex; flex-wrap:wrap; gap:14px;
+      align-items:flex-end; justify-content:space-between;
       margin-bottom: 22px;
     }
-
-    .feed-controls{
-      display:flex;
-      gap:12px;
-      flex-wrap:wrap;
-      align-items:center;
-    }
+    .feed-controls{ display:flex; gap:12px; flex-wrap:wrap; align-items:center; }
 
     .input{
-      width: min(380px, 100%);
+      width: min(420px, 100%);
       padding: 12px 14px;
       border-radius: 14px;
       border: 1px solid #d1d5db;
@@ -104,26 +91,52 @@
     .feed-grid{
       display:grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 24px;
+      gap: 26px;
     }
 
     .post-card{
       background: var(--white);
       border-radius: 26px;
       box-shadow: 0 16px 36px rgba(0,0,0,0.08);
-      padding: 28px;
-      display:flex;
-      flex-direction:column;
-      gap: 12px;
-      min-height: 220px;
-      position: relative;
       overflow:hidden;
       cursor:pointer;
       transition: transform .15s ease, box-shadow .15s ease;
+      display:flex;
+      flex-direction:column;
+      min-height: 360px;
     }
     .post-card:hover{
       transform: translateY(-2px);
       box-shadow: 0 20px 46px rgba(0,0,0,0.12);
+    }
+
+    /* Imagem grande como site de notícias */
+    .post-hero{
+      position: relative;
+      width: 100%;
+      height: 190px;
+      background: linear-gradient(135deg, rgba(31,136,201,0.22), rgba(63,179,230,0.18));
+    }
+    .post-hero img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display:block;
+      filter: saturate(1.05) contrast(1.02);
+    }
+    .post-hero::after{
+      content:"";
+      position:absolute; inset:0;
+      background: linear-gradient(to bottom, rgba(15,23,42,0.00), rgba(15,23,42,0.22));
+      pointer-events:none;
+    }
+
+    .post-body{
+      padding: 20px 22px 22px;
+      display:flex;
+      flex-direction:column;
+      gap: 10px;
+      flex:1;
     }
 
     .post-meta{
@@ -140,29 +153,22 @@
       border: 1px solid rgba(79, 179, 230, 0.28);
       padding: 6px 10px;
       border-radius: 999px;
-      font-weight: 700;
+      font-weight: 800;
       font-size: .82rem;
     }
 
-    .post-title{
-      font-size: 1.25rem;
-      line-height: 1.25;
-      margin-top: 2px;
-    }
-
-    .post-excerpt{
-      color: #374151;
-      margin-top: 4px;
-    }
+    .post-title{ font-size: 1.25rem; line-height: 1.22; margin-top: 2px; }
+    .post-excerpt{ color: #374151; margin-top: 2px; }
 
     .readmore{
       margin-top: auto;
       display:inline-flex;
       align-items:center;
       gap:10px;
-      font-weight: 800;
+      font-weight: 900;
       color: var(--blue-deep);
       text-decoration:none;
+      padding-top: 6px;
     }
 
     .empty{
@@ -174,11 +180,10 @@
     }
 
     /* =========================
-       MODAL do post
+       MODAL do post (com imagem)
        ========================= */
     .modal-backdrop{
-      position: fixed;
-      inset: 0;
+      position: fixed; inset: 0;
       background: rgba(15, 23, 42, 0.55);
       display: none;
       align-items: center;
@@ -190,17 +195,18 @@
 
     .modal{
       width: 100%;
-      max-width: 860px;
+      max-width: 920px;
       background: var(--white);
       border-radius: 26px;
       box-shadow: 0 22px 60px rgba(0,0,0,0.25);
-      padding: 34px;
+      overflow:hidden;
       position: relative;
       transform: translateY(8px);
       opacity: 0;
       transition: .18s ease;
-      max-height: 80vh;
-      overflow: auto;
+      max-height: 84vh;
+      display:flex;
+      flex-direction:column;
     }
     .modal-backdrop.show .modal{ transform: translateY(0); opacity: 1; }
 
@@ -208,24 +214,41 @@
       position:absolute; top: 14px; right: 16px;
       width: 40px; height: 40px;
       border-radius: 999px;
-      border: 1px solid #e5e7eb;
-      background: #fff;
+      border: 1px solid rgba(255,255,255,0.75);
+      background: rgba(255,255,255,0.92);
       cursor: pointer;
       font-size: 18px;
       line-height: 1;
+      z-index: 5;
     }
 
-    .modal h3{
-      font-size: 1.7rem;
-      margin-bottom: 8px;
+    .modal-hero{
+      height: 260px;
+      background: linear-gradient(135deg, rgba(31,136,201,0.22), rgba(63,179,230,0.18));
+      position: relative;
     }
+    .modal-hero img{
+      width:100%; height:100%;
+      object-fit: cover;
+      display:block;
+      filter: saturate(1.05) contrast(1.02);
+    }
+    .modal-hero::after{
+      content:"";
+      position:absolute; inset:0;
+      background: linear-gradient(to bottom, rgba(15,23,42,0.05), rgba(15,23,42,0.35));
+      pointer-events:none;
+    }
+
+    .modal-inner{
+      padding: 26px 28px 28px;
+      overflow:auto;
+    }
+
+    .modal h3{ font-size: 1.85rem; margin-bottom: 8px; }
     .modal .modal-meta{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      align-items:center;
-      color: var(--gray);
-      margin-bottom: 16px;
+      display:flex; gap:10px; flex-wrap:wrap; align-items:center;
+      color: var(--gray); margin-bottom: 16px;
     }
     .modal .content p{ margin-bottom: 14px; }
     .modal .content ul{ padding-left: 22px; margin: 14px 0; }
@@ -235,14 +258,13 @@
       .post-card, .modal{ transition: none; }
       .post-card:hover{ transform: none; }
     }
-
     @media (max-width: 560px){
       header h1{ font-size: 2.1rem; }
       section{ padding: 70px 16px; }
-      .post-card{ padding: 22px; }
-      .modal{ padding: 22px; }
+      .post-hero{ height: 170px; }
+      .modal-hero{ height: 200px; }
+      .modal-inner{ padding: 20px; }
     }
-
   </style>
 </head>
 <body>
@@ -270,7 +292,7 @@
   <div class="feed-header">
     <div>
       <h3 style="margin-bottom:6px;">Últimas postagens</h3>
-      <p style="color: var(--gray); max-width: 62ch;">
+      <p style="color: var(--gray); max-width: 70ch;">
         Um feed atualizado com dicas práticas, reflexões e comparações éticas entre caminhos para estudar inglês.
       </p>
     </div>
@@ -294,9 +316,12 @@
 <div id="postModalBackdrop" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="postModalTitle">
   <div class="modal">
     <button class="modal-close" id="closeModalBtn" aria-label="Fechar">×</button>
-    <h3 id="postModalTitle"></h3>
-    <div class="modal-meta" id="postModalMeta"></div>
-    <div class="content" id="postModalContent"></div>
+    <div class="modal-hero" id="postModalHero"></div>
+    <div class="modal-inner">
+      <h3 id="postModalTitle"></h3>
+      <div class="modal-meta" id="postModalMeta"></div>
+      <div class="content" id="postModalContent"></div>
+    </div>
   </div>
 </div>
 
@@ -305,10 +330,8 @@
 </footer>
 
 <script>
-  // Coloque o arquivo em: /data/posts.json (crie a pasta "data" no repositório)
-  const POSTS_URL = 'data/posts.json';
-
-  const feedEl = document.getElementById('feed');
+  // Carregamento robusto do JSON (domínio raiz / GitHub Pages em subpasta)
+  const FEED_EL = document.getElementById('feed');
   const searchInput = document.getElementById('searchInput');
 
   const tagAll = document.getElementById('tagAll');
@@ -320,9 +343,16 @@
   const modalTitle = document.getElementById('postModalTitle');
   const modalMeta = document.getElementById('postModalMeta');
   const modalContent = document.getElementById('postModalContent');
+  const modalHero = document.getElementById('postModalHero');
 
   let POSTS = [];
   let activeTag = 'all';
+
+  const CANDIDATES = [
+    new URL('./data/posts.json', window.location.href).toString(),
+    'data/posts.json',
+    '/data/posts.json'
+  ];
 
   function formatDate(iso){
     try{
@@ -330,15 +360,12 @@
       return d.toLocaleDateString('pt-BR', { day:'2-digit', month:'long', year:'numeric' });
     }catch(e){ return iso; }
   }
-
   function normalize(str){
     return (str || '').toString().toLowerCase().normalize('NFD').replace(/\p{Diacritic}/gu,'');
   }
-
   function stripHtml(html){
     return (html || '').toString().replace(/<[^>]*>/g,' ');
   }
-
   function escapeHtml(str){
     return (str || '').toString()
       .replaceAll('&','&amp;')
@@ -346,6 +373,15 @@
       .replaceAll('>','&gt;')
       .replaceAll('"','&quot;')
       .replaceAll("'",'&#39;');
+  }
+
+  function safeImageUrl(p){
+    // Você pode usar:
+    // - URL completa (https://...)
+    // - caminho local (images/meu-post.jpg)
+    // Se não tiver, usamos um fallback bonito com gradiente (sem imagem).
+    const img = (p && p.image) ? String(p.image).trim() : '';
+    return img || '';
   }
 
   function render(){
@@ -362,29 +398,38 @@
       return hay.includes(q);
     });
 
-    feedEl.innerHTML = '';
+    FEED_EL.innerHTML = '';
 
     if(filtered.length === 0){
-      feedEl.innerHTML = `<div class="empty">Nenhuma postagem encontrada. Tente outro termo de busca ou selecione “Tudo”.</div>`;
+      FEED_EL.innerHTML = `<div class="empty">Nenhuma postagem encontrada. Tente outro termo de busca ou selecione “Tudo”.</div>`;
       return;
     }
 
     filtered.forEach(p => {
       const tags = (p.tags || []).slice(0, 3).map(t => `<span class="tag">${escapeHtml(t)}</span>`).join('');
+      const img = safeImageUrl(p);
+
       const card = document.createElement('article');
       card.className = 'post-card';
       card.tabIndex = 0;
       card.setAttribute('role','button');
       card.setAttribute('aria-label', 'Abrir postagem: ' + p.title);
 
+      const hero = img
+        ? `<div class="post-hero"><img src="${escapeHtml(img)}" alt="${escapeHtml(p.image_alt || p.title || 'Imagem do post')}" loading="lazy"></div>`
+        : `<div class="post-hero" aria-hidden="true"></div>`;
+
       card.innerHTML = `
-        <div class="post-meta">
-          <span>${formatDate(p.date)}</span>
-          ${tags}
+        ${hero}
+        <div class="post-body">
+          <div class="post-meta">
+            <span>${formatDate(p.date)}</span>
+            ${tags}
+          </div>
+          <h4 class="post-title">${escapeHtml(p.title)}</h4>
+          <p class="post-excerpt">${escapeHtml(p.excerpt || '')}</p>
+          <span class="readmore">Ler postagem →</span>
         </div>
-        <h4 class="post-title">${escapeHtml(p.title)}</h4>
-        <p class="post-excerpt">${escapeHtml(p.excerpt || '')}</p>
-        <span class="readmore">Ler postagem →</span>
       `;
 
       card.addEventListener('click', () => openPost(p));
@@ -395,15 +440,22 @@
         }
       });
 
-      feedEl.appendChild(card);
+      FEED_EL.appendChild(card);
     });
   }
 
   function openPost(p){
     modalTitle.textContent = p.title;
+
     const tags = (p.tags || []).map(t => `<span class="tag">${escapeHtml(t)}</span>`).join('');
     modalMeta.innerHTML = `<span>${formatDate(p.date)}</span>${tags ? ' ' + tags : ''}`;
     modalContent.innerHTML = p.content_html || '';
+
+    const img = safeImageUrl(p);
+    modalHero.innerHTML = img
+      ? `<img src="${escapeHtml(img)}" alt="${escapeHtml(p.image_alt || p.title || 'Imagem do post')}" loading="lazy">`
+      : ``;
+
     modalBackdrop.classList.add('show');
     document.body.style.overflow = 'hidden';
     closeModalBtn.focus();
@@ -434,22 +486,34 @@
   tagAll.addEventListener('click', () => setActiveTag('all'));
   tagMetodo.addEventListener('click', () => setActiveTag('método'));
   tagEscolas.addEventListener('click', () => setActiveTag('escolas'));
-
   searchInput.addEventListener('input', () => render());
+
+  async function fetchFirstOk(urls){
+    let lastErr = null;
+    for(const url of urls){
+      try{
+        const res = await fetch(url, { cache: 'no-store' });
+        if(!res.ok) throw new Error(`HTTP ${res.status} em ${url}`);
+        const data = await res.json();
+        return { data, url };
+      }catch(err){
+        lastErr = err;
+      }
+    }
+    throw lastErr || new Error('Falha ao buscar posts.json');
+  }
 
   async function init(){
     try{
-      const res = await fetch(POSTS_URL, { cache: 'no-store' });
-      if(!res.ok) throw new Error('HTTP ' + res.status);
-      const data = await res.json();
-
-      POSTS = (Array.isArray(data) ? data : []).slice().sort((a,b) => (b.date || '').localeCompare(a.date || ''));
+      const { data } = await fetchFirstOk(CANDIDATES);
+      POSTS = (Array.isArray(data) ? data : []).slice()
+        .sort((a,b) => (b.date || '').localeCompare(a.date || ''));
       render();
     }catch(err){
-      feedEl.innerHTML = `
+      FEED_EL.innerHTML = `
         <div class="empty">
-          Não foi possível carregar o feed agora. Verifique se o arquivo <strong>${POSTS_URL}</strong> existe no repositório.
-          <div style="margin-top:10px;">Detalhe: <code>${escapeHtml(err.message)}</code></div>
+          Não foi possível carregar o feed agora. Verifique se <strong>data/posts.json</strong> existe e está válido.
+          <div style="margin-top:10px;"><code>${escapeHtml(err.message || String(err))}</code></div>
         </div>
       `;
       console.error(err);
