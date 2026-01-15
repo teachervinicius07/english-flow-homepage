@@ -6,7 +6,6 @@
   <title>Dicas – English Flow</title>
   <link rel="stylesheet" href="css/style.css">
   <style>
-
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
     body { background-color: var(--light-gray); color: #1f2937; line-height: 1.7; }
 
@@ -16,12 +15,10 @@
       backdrop-filter: blur(8px);
       box-shadow: 0 4px 16px rgba(0,0,0,0.06);
     }
-
     nav .nav-container {
       max-width: 1100px; margin: auto; padding: 14px 20px;
       display: flex; justify-content: space-between; align-items: center;
     }
-
     nav a { text-decoration: none; color: var(--gray); font-weight: 500; margin-left: 20px; }
     nav a:hover { color: var(--blue-deep); }
 
@@ -45,7 +42,6 @@
       padding: 90px 20px;
       text-align: center;
     }
-
     header h1 { font-size: 2.6rem; margin-bottom: 10px; }
     header h2 { font-weight: 400; color: var(--light-gray); }
 
@@ -54,25 +50,15 @@
 
     footer { background: #0f172a; color: #dbeafe; text-align: center; padding: 50px 20px; }
 
-    /* =========================
-       FEED (BLOG) – novidades
-       ========================= */
+    /* FEED */
     .feed-header{
-      display:flex;
-      flex-wrap:wrap;
-      gap:14px;
-      align-items:center;
-      justify-content:space-between;
+      display:flex; flex-wrap:wrap; gap:14px;
+      align-items:center; justify-content:space-between;
       margin-bottom: 22px;
     }
-
     .feed-controls{
-      display:flex;
-      gap:12px;
-      flex-wrap:wrap;
-      align-items:center;
+      display:flex; gap:12px; flex-wrap:wrap; align-items:center;
     }
-
     .input{
       width: min(380px, 100%);
       padding: 12px 14px;
@@ -143,25 +129,12 @@
       font-weight: 700;
       font-size: .82rem;
     }
-
-    .post-title{
-      font-size: 1.25rem;
-      line-height: 1.25;
-      margin-top: 2px;
-    }
-
-    .post-excerpt{
-      color: #374151;
-      margin-top: 4px;
-    }
-
+    .post-title{ font-size: 1.25rem; line-height: 1.25; margin-top: 2px; }
+    .post-excerpt{ color: #374151; margin-top: 4px; }
     .readmore{
       margin-top: auto;
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      font-weight: 800;
-      color: var(--blue-deep);
+      display:inline-flex; align-items:center; gap:10px;
+      font-weight: 800; color: var(--blue-deep);
       text-decoration:none;
     }
 
@@ -172,13 +145,21 @@
       border: 1px dashed #d1d5db;
       color: var(--gray);
     }
+    .debug{
+      margin-top: 10px;
+      font-size: .95rem;
+      color: #0f172a;
+      background: rgba(255,255,255,0.75);
+      border: 1px solid #e5e7eb;
+      padding: 12px 14px;
+      border-radius: 16px;
+      overflow-wrap: anywhere;
+    }
+    .debug code{ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
 
-    /* =========================
-       MODAL do post
-       ========================= */
+    /* MODAL */
     .modal-backdrop{
-      position: fixed;
-      inset: 0;
+      position: fixed; inset: 0;
       background: rgba(15, 23, 42, 0.55);
       display: none;
       align-items: center;
@@ -203,7 +184,6 @@
       overflow: auto;
     }
     .modal-backdrop.show .modal{ transform: translateY(0); opacity: 1; }
-
     .modal-close{
       position:absolute; top: 14px; right: 16px;
       width: 40px; height: 40px;
@@ -214,18 +194,10 @@
       font-size: 18px;
       line-height: 1;
     }
-
-    .modal h3{
-      font-size: 1.7rem;
-      margin-bottom: 8px;
-    }
+    .modal h3{ font-size: 1.7rem; margin-bottom: 8px; }
     .modal .modal-meta{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      align-items:center;
-      color: var(--gray);
-      margin-bottom: 16px;
+      display:flex; gap:10px; flex-wrap:wrap; align-items:center;
+      color: var(--gray); margin-bottom: 16px;
     }
     .modal .content p{ margin-bottom: 14px; }
     .modal .content ul{ padding-left: 22px; margin: 14px 0; }
@@ -235,14 +207,12 @@
       .post-card, .modal{ transition: none; }
       .post-card:hover{ transform: none; }
     }
-
     @media (max-width: 560px){
       header h1{ font-size: 2.1rem; }
       section{ padding: 70px 16px; }
       .post-card{ padding: 22px; }
       .modal{ padding: 22px; }
     }
-
   </style>
 </head>
 <body>
@@ -305,10 +275,14 @@
 </footer>
 
 <script>
-  // Coloque o arquivo em: /data/posts.json (crie a pasta "data" no repositório)
-  const POSTS_URL = 'data/posts.json';
+  // =========================================================
+  // Carregamento robusto do JSON (funciona em:
+  // - domínio próprio (raiz)
+  // - GitHub Pages em subpasta (/repo/)
+  // - sem precisar mudar o caminho manualmente)
+  // =========================================================
 
-  const feedEl = document.getElementById('feed');
+  const FEED_EL = document.getElementById('feed');
   const searchInput = document.getElementById('searchInput');
 
   const tagAll = document.getElementById('tagAll');
@@ -323,6 +297,13 @@
 
   let POSTS = [];
   let activeTag = 'all';
+
+  // 1) Primeiro tentamos um caminho relativo ao arquivo atual (mais robusto)
+  const CANDIDATES = [
+    new URL('./data/posts.json', window.location.href).toString(),
+    'data/posts.json',
+    '/data/posts.json'
+  ];
 
   function formatDate(iso){
     try{
@@ -362,10 +343,10 @@
       return hay.includes(q);
     });
 
-    feedEl.innerHTML = '';
+    FEED_EL.innerHTML = '';
 
     if(filtered.length === 0){
-      feedEl.innerHTML = `<div class="empty">Nenhuma postagem encontrada. Tente outro termo de busca ou selecione “Tudo”.</div>`;
+      FEED_EL.innerHTML = `<div class="empty">Nenhuma postagem encontrada. Tente outro termo de busca ou selecione “Tudo”.</div>`;
       return;
     }
 
@@ -395,7 +376,7 @@
         }
       });
 
-      feedEl.appendChild(card);
+      FEED_EL.appendChild(card);
     });
   }
 
@@ -437,19 +418,46 @@
 
   searchInput.addEventListener('input', () => render());
 
+  async function fetchFirstOk(urls){
+    let lastErr = null;
+    for(const url of urls){
+      try{
+        const res = await fetch(url, { cache: 'no-store' });
+        if(!res.ok) throw new Error(`HTTP ${res.status} em ${url}`);
+        const data = await res.json();
+        return { data, url };
+      }catch(err){
+        lastErr = err;
+      }
+    }
+    throw lastErr || new Error('Falha ao buscar posts.json');
+  }
+
   async function init(){
     try{
-      const res = await fetch(POSTS_URL, { cache: 'no-store' });
-      if(!res.ok) throw new Error('HTTP ' + res.status);
-      const data = await res.json();
+      const { data, url } = await fetchFirstOk(CANDIDATES);
+      POSTS = (Array.isArray(data) ? data : []).slice()
+        .sort((a,b) => (b.date || '').localeCompare(a.date || ''));
 
-      POSTS = (Array.isArray(data) ? data : []).slice().sort((a,b) => (b.date || '').localeCompare(a.date || ''));
       render();
+
+      // Se quiser debugar no console:
+      // console.log('Feed carregado de:', url, POSTS);
     }catch(err){
-      feedEl.innerHTML = `
+      const attempted = CANDIDATES.map(u => `<li><code>${escapeHtml(u)}</code></li>`).join('');
+      FEED_EL.innerHTML = `
         <div class="empty">
-          Não foi possível carregar o feed agora. Verifique se o arquivo <strong>${POSTS_URL}</strong> existe no repositório.
-          <div style="margin-top:10px;">Detalhe: <code>${escapeHtml(err.message)}</code></div>
+          Não foi possível carregar o feed agora.
+          <div class="debug">
+            <strong>Possíveis causas:</strong>
+            <ul style="margin:10px 0 0; padding-left:18px;">
+              <li>Você está abrindo o arquivo localmente (file://). O fetch pode ser bloqueado. Teste via GitHub Pages.</li>
+              <li>O caminho do JSON no repositório não está exatamente <code>data/posts.json</code> (atenção a maiúsculas/minúsculas).</li>
+              <li>O arquivo não foi commitado/publicado na branch que o Pages usa.</li>
+            </ul>
+            <div style="margin-top:10px;"><strong>URLs tentadas:</strong><ul style="margin-top:6px; padding-left:18px;">${attempted}</ul></div>
+            <div style="margin-top:10px;"><strong>Erro:</strong> <code>${escapeHtml(err.message || String(err))}</code></div>
+          </div>
         </div>
       `;
       console.error(err);
