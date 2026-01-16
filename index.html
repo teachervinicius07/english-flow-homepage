@@ -9,6 +9,36 @@
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
     body { background-color: var(--light-gray); color: #1f2937; line-height: 1.6; }
 
+    /* NAVEGAÇÃO GERAL DE TODAS AS PÁGINAS */
+    nav {
+      position: sticky; top: 0; z-index: 1000;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    }
+    nav .nav-container {
+      max-width: 1100px; margin: auto; padding: 14px 20px;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    nav a { text-decoration: none; color: var(--gray); font-weight: 500; margin-left: 20px; }
+    nav a:hover { color: var(--blue-deep); }
+
+    /* HEADER GERAL DE TODAS AS PÁGINAS */
+    header {
+      background: linear-gradient(135deg, var(--blue), var(--blue-deep));
+      padding: 100px 20px;
+      text-align: center;
+      height: 85vh;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header h1 { font-size: 2.8rem; margin: 14px 0 10px; }
+    header h2 { font-weight: 400; color: var(--light-gray); margin-bottom: 26px; }
+
+    section { padding: 50px 20px; max-width: 1100px; margin: auto; }
+    section h3 { font-size: 2.2rem; margin-bottom: 22px; }
+
     .hero-sub {
       max-width: 68ch;
       margin: 0 auto 26px;
