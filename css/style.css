@@ -22,6 +22,7 @@
 header {
   background: linear-gradient(135deg, var(--blue), var(--blue-deep));
   padding: 100px 20px;
+  height: 85vh;
   text-align: center;
 }
 

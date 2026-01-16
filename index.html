@@ -52,22 +52,6 @@
       position: relative;
       overflow: hidden;
     }
-    header::before{
-      content:"";
-      position:absolute; inset:-120px -80px auto auto;
-      width: 420px; height: 420px;
-      background: radial-gradient(circle at center, rgba(255,255,255,0.45), rgba(255,255,255,0));
-      transform: rotate(18deg);
-      pointer-events:none;
-    }
-    header::after{
-      content:"";
-      position:absolute; inset:auto auto -140px -90px;
-      width: 520px; height: 520px;
-      background: radial-gradient(circle at center, rgba(255,255,255,0.22), rgba(255,255,255,0));
-      transform: rotate(-10deg);
-      pointer-events:none;
-    }
 
     header h1 { font-size: 2.8rem; margin: 14px 0 10px; }
     header h2 { font-weight: 400; color: var(--light-gray); margin-bottom: 26px; }
@@ -165,7 +149,7 @@
     }
 
     .cta-band{
-      background: #0f172a;
+      background: linear-gradient(135deg, var(--blue), var(--blue-deep));
       color: #dbeafe;
       border-radius: 26px;
       padding: 34px;
@@ -179,12 +163,15 @@
     .cta-band h3{ margin:0; color:#fff; font-size: 1.8rem; }
     .cta-band p{ margin: 6px 0 0; color: rgba(219,234,254,0.9); max-width: 70ch; }
 
-    footer { background: #0f172a; color: #dbeafe; text-align: center; padding: 50px 20px; }
-
-    @media (max-width: 860px){
-      .split{ grid-template-columns: 1fr; }
-      header h1{ font-size: 2.35rem; }
+    .hero-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 160vh;
+      object-fit: cover;
     }
+
+
   </style>
 </head>
 <body>
@@ -204,6 +191,12 @@
 </nav>
 
 <header>
+  <!-- 1) Video Header -->
+  <script src="js/video.js" defer></script>
+  <video id="heroVideo" class="hero-video" autoplay muted loop playsinline>
+    <source src="videos/english_flow_header.mp4" type="video/mp4">
+  </video>
+
   <div class="split" style="max-width:1100px; margin:0 auto;">
     <div style="position:relative; z-index:2; text-align:left;">
       <span class="kicker">Aulas online para adultos</span>
@@ -366,7 +359,7 @@
       </p>
       <div style="margin-top:16px;">
         <a href="contato.html" class="cta">Falar comigo</a>
-        <a href="sobre.html" class="cta secondary" style="margin-left:10px;">Ver “Sobre Nós”</a>
+        <a href="sobre.html" class="cta" style="margin-left:10px;">Ver “Sobre Nós”</a>
       </div>
     </div>
   </div>
@@ -380,7 +373,7 @@
       <p>Faça o teste de nível ou me envie seus dados para eu te orientar no plano ideal.</p>
     </div>
     <div style="display:flex; gap:12px; flex-wrap:wrap;">
-      <a href="teste-nivel.html" class="cta">Fazer teste</a>
+      <a href="teste-nivel.html" class="cta secondary">Fazer teste</a>
       <a href="contato.html" class="cta secondary">Entrar em contato</a>
     </div>
   </div>
