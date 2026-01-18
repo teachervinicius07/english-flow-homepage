@@ -33,7 +33,7 @@
       overflow: hidden;
     }
 
-    header h1 { font-size: 2.8rem; margin: 14px 0 10px; }
+    header h1 { font-size: 3rem; margin: 14px 0 10px; }
     header h2 { font-weight: 400; color: var(--light-gray); margin-bottom: 26px; }
 
     section { padding: 50px 20px; max-width: 1100px; margin: auto; }
@@ -43,7 +43,7 @@
       max-width: 68ch;
       margin: 0 auto 26px;
       color: rgba(255,255,255,0.92);
-      font-size: 1.05rem;
+      font-size: 1.25rem;
     }
     .hero-actions{ display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
 
@@ -83,10 +83,13 @@
 
     .split{
       display:grid;
+      justify-items: center;
+      align-items:center;
       grid-template-columns: 1.1fr 0.9fr;
       gap: 26px;
       align-items: stretch;
     }
+
     .hero-illustration{
       background: linear-gradient(135deg, rgba(255,255,255,0.66), rgba(255,255,255,0.35));
       border: 1px solid rgba(255,255,255,0.55);
@@ -121,12 +124,11 @@
       justify-content:center;
     }
     .mini span{
-      background: rgba(255,255,255,0.16);
-      border: 1px solid rgba(255,255,255,0.20);
-      padding: 8px 12px;
+      padding: 2px 12px;
       border-radius: 999px;
       font-weight: 600;
-      font-size: .92rem;
+      font-size: 1.4rem;
+      margin-bottom:18px;
     }
 
     .cta-band{
@@ -143,14 +145,38 @@
     }
     .cta-band h3{ margin:0; color:#fff; font-size: 1.8rem; }
     .cta-band p{ margin: 6px 0 0; color: rgba(219,234,254,0.9); max-width: 70ch; }
+
+    .logo-img{
+      display: block;           /* remove “baseline gap” do inline */
+      height: 42px;             /* ajuste */
+      width: auto;
+      filter: drop-shadow(0.2px 0.2px 0px #1e88c9) 
+          drop-shadow(-0.2px -0.2px 0px #1e88c9)
+          drop-shadow(0.2px -0.2px 0px #1e88c9)
+          drop-shadow(-0.2px 0.2px 0px #1e88c9);
+    }
+
+    .logo-link{
+      display: inline-flex;     /* ou inline-block */
+      align-items: center;
+      cursor: hand cursor;
+      position: relative; 
+      z-index: 2000;
+    }
+
   </style>
 </head>
 <body>
 
 <nav>
   <div class="nav-container">
-    <strong>English Flow</strong>
-    <div>
+    <div style="position:relative; z-index:2;">
+      </div>
+        <a class="logo-link" href="index.html" aria-label="Voltar para o início">
+          <img src="images/logo.png" alt="English Flow Logo" class="logo-img" style="max-width:300px" ; />
+        </a>
+      <div>
+    
       <a href="index.html">Início</a>
       <a href="planos.html">Planos</a>
       <a href="sobre.html">Sobre Nós</a>
@@ -168,31 +194,30 @@
     <source src="videos/english_flow_header.mp4" type="video/mp4">
   </video>
 
-  <div class="split" style="max-width:1100px; margin:0 auto;">
-    <div style="position:relative; z-index:2; text-align:left;">
-      <span class="kicker">Aulas online para adultos</span>
-      <h1>Get your English flowing.</h1>
-      <h2 style="margin-bottom:14px;">Inglês estruturado para estudos e carreira</h2>
-      <p class="hero-sub" style="margin-left:0;">
-        Aulas curtas, frequentes e objetivas — para você construir vocabulário, gramática e conversação
-        com clareza e constância, mesmo com rotina acelerada.
+  <section class="sectionheader">
+    <div style="position:relative; z-index:2;">
+      <img src="images/logo2.png" alt="English Flow Logo" style="max-width:200px; margin-bottom:0px;" />
+    </div>
+
+    <div style="position:relative; z-index:2; text-align:center; margin: 0 auto;">
+      <h1>Fluência no inglês para sua carreira.</h1>
+      <p class="hero-sub";>
+        Aulas curtas e objetivas para profissionais ocupados. Construa gramática e conversação com clareza, agilidade e eficiência.
       </p>
 
-      <div class="hero-actions" style="justify-content:flex-start;">
-        <a href="teste-nivel.html" class="cta">Fazer teste de nível</a>
-        <a href="contato.html" class="cta secondary">Falar comigo</a>
-      </div>
-
-      <div class="mini" style="justify-content:flex-start;">
+      <div class="mini" style="justify-content:center;">
         <span>Cambridge C1</span>
         <span>Adultos • Brasil & Portugal</span>
         <span>Aulas 30 min</span>
       </div>
-    </div>
 
-    <div style="position:relative; z-index:2;">
-    <img src="images/logo.png" alt="English Flow Logo" style="max-width:500px; margin-bottom:0px;" />
+      <div class="hero-actions" style="justify-content:center;">
+        <a href="contato.html" class="cta secondary">Falar comigo</a>
+        <a href="teste-nivel.html" class="cta">Fazer teste de nível</a>
+      </div>
     </div>
+  </sectionheader>
+
 </header>
 
 <!-- 1) Isso é para quem? -->
