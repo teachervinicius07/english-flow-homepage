@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Press / Imprensa – English Flow</title>
+
+  <!-- Seu arquivo com :root -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+    body { background-color: var(--light-gray); color: #0f172a; line-height: 1.7; }
+
+    nav {
+      position: sticky; top: 0; z-index: 1000;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    }
+    nav .nav-container {
+      max-width: 1100px; margin: auto; padding: 14px 20px;
+      display: flex; justify-content: space-between; align-items: center;
+      gap: 12px;
+    }
+    nav a { text-decoration: none; color: var(--gray); font-weight: 600; margin-left: 20px; white-space: nowrap; }
+    nav a:hover { color: var(--blue-deep); }
+
+    .cta {
+      background-color: var(--blue-deep);
+      color: var(--white) !important;
+      padding: 12px 22px;
+      border-radius: 999px;
+      font-weight: 800;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      box-shadow: 0 14px 30px rgba(0,0,0,0.12);
+    }
+    .cta.secondary {
+      background: rgba(255,255,255,0.9);
+      color: #0f172a !important;
+      border: 1px solid rgba(15,23,42,0.12);
+      box-shadow: 0 14px 30px rgba(0,0,0,0.08);
+    }
+
+    .wrap { max-width: 1100px; margin: auto; padding: 0 20px; }
+
+    /* HERO */
+    header {
+      background: linear-gradient(135deg, var(--blue), var(--blue-deep));
+      padding: 86px 0 74px;
+      position: relative;
+      overflow: hidden;
+    }
+    header::before{
+      content:"";
+      position:absolute; inset:-140px -90px auto auto;
+      width: 520px; height: 520px;
+      background: radial-gradient(circle at center, rgba(255,255,255,0.38), rgba(255,255,255,0));
+      transform: rotate(18deg);
+      pointer-events:none;
+    }
+    header::after{
+      content:"";
+      position:absolute; inset:auto auto -170px -90px;
+      width: 620px; height: 620px;
+      background: radial-gradient(circle at center, rgba(255,255,255,0.18), rgba(255,255,255,0));
+      transform: rotate(-10deg);
+      pointer-events:none;
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 26px;
+      align-items: stretch;
+    }
+    .hero h1{ font-size: 2.7rem; color: #fff; margin: 10px 0 10px; }
+    .hero p{ color: rgba(255,255,255,0.92); max-width: 70ch; }
+    .hero-actions{ display:flex; gap: 12px; flex-wrap: wrap; margin-top: 22px; }
+
+    .kicker{
+      display:inline-block;
+      font-weight: 900;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      font-size: .78rem;
+      color: rgba(15,23,42,0.70);
+      background: rgba(255,255,255,0.55);
+      border: 1px solid rgba(15,23,42,0.08);
+      padding: 8px 12px;
+      border-radius: 999px;
+    }
+
+    .hero-card{
+      background: rgba(255,255,255,0.92);
+      border: 1px solid rgba(255,255,255,0.58);
+      border-radius: 26px;
+      padding: 22px;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.12);
+      position: relative;
+      overflow:hidden;
+    }
+    .slot{
+      border-radius: 18px;
+      background: linear-gradient(135deg, rgba(15,23,42,0.06), rgba(15,23,42,0.02));
+      border: 1px dashed rgba(15,23,42,0.18);
+      padding: 18px;
+      min-height: 170px;
+      display:flex; align-items:center; justify-content:center;
+      text-align:center;
+      color: rgba(15,23,42,0.62);
+      font-weight: 800;
+    }
+    .mini{
+      margin-top: 14px;
+      display:flex; gap: 10px; flex-wrap:wrap;
+    }
+    .pill{
+      background: rgba(63,179,230,0.14);
+      border: 1px solid rgba(63,179,230,0.22);
+      color: #0f4c75;
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-weight: 900;
+      font-size: .9rem;
+    }
+
+    /* SECTIONS */
+    section{ padding: 84px 0; }
+    section h2{ font-size: 2.1rem; margin-bottom: 16px; }
+    .muted{ color: var(--gray); }
+
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 22px;
+      margin-top: 18px;
+    }
+    .card{
+      background: var(--white);
+      border-radius: 22px;
+      padding: 28px;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.06);
+      border: 1px solid rgba(15,23,42,0.06);
+    }
+    .card h3{ font-size: 1.2rem; margin-bottom: 10px; }
+    .card p{ color: #374151; }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap: 10px;
+      border-radius: 999px;
+      padding: 12px 16px;
+      border: 1px solid rgba(15,23,42,0.12);
+      background: rgba(255,255,255,0.9);
+      font-weight: 900;
+      color: #0f172a;
+      text-decoration:none;
+      margin-top: 14px;
+      cursor:pointer;
+    }
+    .btn:hover{ border-color: rgba(15,23,42,0.22); }
+
+    /* LOGO GRID */
+    .logo-grid{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 18px;
+      margin-top: 18px;
+    }
+    .logo-tile{
+      background: rgba(255,255,255,0.9);
+      border: 1px dashed rgba(15,23,42,0.18);
+      border-radius: 18px;
+      min-height: 88px;
+      display:flex; align-items:center; justify-content:center;
+      color: rgba(15,23,42,0.55);
+      font-weight: 900;
+      text-align:center;
+      padding: 10px;
+    }
+
+    /* QUOTES */
+    .quote{
+      border-left: 4px solid var(--blue-deep);
+      padding-left: 14px;
+    }
+    .quote small{ display:block; margin-top: 8px; color: var(--gray); font-weight: 700; }
+
+    /* CTA BAND */
+    .cta-band{
+      background: #0f172a;
+      color: #dbeafe;
+      border-radius: 26px;
+      padding: 34px;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.14);
+      display:flex;
+      gap: 18px;
+      align-items:center;
+      justify-content:space-between;
+      flex-wrap:wrap;
+    }
+    .cta-band h2{ margin:0; color:#fff; font-size: 1.8rem; }
+    .cta-band p{ margin: 6px 0 0; color: rgba(219,234,254,0.9); max-width: 70ch; }
+
+    footer { background: #0f172a; color: #dbeafe; text-align: center; padding: 50px 20px; }
+
+    @media (max-width: 860px){
+      .hero-grid{ grid-template-columns: 1fr; }
+      .hero h1{ font-size: 2.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-container">
+    <strong>English Flow</strong>
+    <div>
+      <a href="index.html">Início</a>
+      <a href="planos.html">Planos</a>
+      <a href="sobre.html">Sobre Nós</a>
+      <a href="dicas.html">Dicas</a>
+      <a href="teste-nivel.html">Teste de Nível</a>
+      <a href="contato.html" class="cta">Contato</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid" style="position:relative; z-index:2;">
+    <div>
+      <span class="kicker">Press / Imprensa</span>
+      <h1>Recursos oficiais do English Flow</h1>
+      <p>
+        Aqui você encontra o kit de mídia, descrição oficial, ativos de marca e contatos para entrevistas,
+        parcerias e divulgação.
+      </p>
+
+      <div class="hero-actions">
+        <!-- Troque links quando tiver seus arquivos -->
+        <a class="cta" href="assets/press-kit.zip" download>Baixar press kit</a>
+        <a class="cta secondary" href="mailto:teacher_esl@hotmail.com">Contato de imprensa</a>
+      </div>
+
+      <div class="mini">
+        <span class="pill">Aulas online</span>
+        <span class="pill">Adultos</span>
+        <span class="pill">Cambridge C1</span>
+      </div>
+    </div>
+
+    <div class="hero-card">
+      <div class="slot">
+        SLOT DE IMAGEM / CAPA (ex: alunos estudando / ambiente profissional)
+      </div>
+      <p class="muted" style="margin-top:12px;">
+        Sugestão: use uma imagem “notícia / editorial” para reforçar credibilidade.
+      </p>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- 1) Sobre / descrição oficial -->
+  <section>
+    <h2>Descrição oficial</h2>
+    <p class="muted" style="max-width: 85ch;">
+      <strong>English Flow</strong> é um projeto de aulas particulares de inglês focado em adultos que buscam
+      comunicação prática para trabalho, estudos e vida real. O método é estruturado, com aulas curtas e frequentes,
+      integrando vocabulário, gramática, pronúncia e conversação com propósito.
+    </p>
+
+    <div class="grid">
+      <div class="card">
+        <h3>Tagline</h3>
+        <p><strong>Get your English flowing.</strong></p>
+      </div>
+      <div class="card">
+        <h3>One-liner</h3>
+        <p>Inglês estruturado para adultos com rotina acelerada e objetivos claros.</p>
+      </div>
+      <div class="card">
+        <h3>Bio curto (Professor)</h3>
+        <p>Vinícius, Cambridge C1, experiência com adultos e inglês acadêmico/profissional.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2) Kit de mídia / downloads -->
+  <section>
+    <h2>Kit de mídia</h2>
+    <p class="muted">Baixe os arquivos oficiais para uso em matérias, posts e divulgações.</p>
+
+    <div class="grid">
+      <div class="card">
+        <h3>Press kit (ZIP)</h3>
+        <p>Inclui logos, paleta, descrição, imagens e versões do ícone.</p>
+        <a class="btn" href="assets/press-kit.zip" download>Baixar</a>
+      </div>
+
+      <div class="card">
+        <h3>Logo (PNG / SVG)</h3>
+        <p>Versões para fundo claro e escuro, além de ícone quadrado.</p>
+        <a class="btn" href="assets/logo-pack.zip" download>Baixar</a>
+      </div>
+
+      <div class="card">
+        <h3>Fotos / imagens</h3>
+        <p>Imagens genéricas (licenciadas) para uso em divulgação.</p>
+        <a class="btn" href="assets/media-images.zip" download>Baixar</a>
+      </div>
+    </div>
+
+    <p class="muted" style="margin-top:14px;">
+      * Dica: crie a pasta <code>assets/</code> e coloque seus ZIPs ali. Assim o download funciona no GitHub Pages.
+    </p>
+  </section>
+
+  <!-- 3) Ativos de marca -->
+  <section>
+    <h2>Ativos de marca</h2>
+    <p class="muted">Espaços para você colocar variações do logo e selos.</p>
+
+    <div class="logo-grid">
+      <div class="logo-tile">Logo principal (PNG)</div>
+      <div class="logo-tile">Logo fundo escuro</div>
+      <div class="logo-tile">Ícone (1:1)</div>
+      <div class="logo-tile">Selo / marca d’água</div>
+      <div class="logo-tile">Tipografia</div>
+      <div class="logo-tile">Paleta de cores</div>
+    </div>
+  </section>
+
+  <!-- 4) Menções / destaques -->
+  <section>
+    <h2>Menções & Destaques</h2>
+    <p class="muted">Quando você tiver links de entrevistas, parcerias ou matérias, liste aqui.</p>
+
+    <div class="grid">
+      <div class="card">
+        <h3>[Veículo / Blog]</h3>
+        <p>“Título da matéria ou citação curta sobre o English Flow.”</p>
+        <a class="btn" href="#" target="_blank" rel="noopener">Abrir link</a>
+      </div>
+      <div class="card">
+        <h3>[Podcast / Canal]</h3>
+        <p>“Participação do professor / tema abordado / data.”</p>
+        <a class="btn" href="#" target="_blank" rel="noopener">Abrir link</a>
+      </div>
+      <div class="card">
+        <h3>[Parceria]</h3>
+        <p>“Colab com empresa / profissional / evento.”</p>
+        <a class="btn" href="#" target="_blank" rel="noopener">Abrir link</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5) Depoimentos curtos (prova social) -->
+  <section>
+    <h2>Depoimentos</h2>
+    <div class="grid">
+      <div class="card">
+        <div class="quote">
+          “Me ajudou muito com meus relatórios de pós-graduação, me sinto muito grata.”
+          <small>— Isabella Duarte</small>
+        </div>
+      </div>
+      <div class="card">
+        <div class="quote">
+          “Hoje entendo muito melhor os meus animes e videoaulas em inglês.”
+          <small>— Gabriel Kewen</small>
+        </div>
+      </div>
+      <div class="card">
+        <div class="quote">
+          “Um excelente profissional, muito atencioso e prestativo.”
+          <small>— Sandro Vera</small>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6) Contato -->
+  <section>
+    <h2>Contato de imprensa</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>E-mail</h3>
+        <p><a href="mailto:teacher_esl@hotmail.com">teacher_esl@hotmail.com</a></p>
+      </div>
+      <div class="card">
+        <h3>Instagram</h3>
+        <p><a href="https://instagram.com/teacher_esl" target="_blank" rel="noopener">@teacher_esl</a></p>
+      </div>
+      <div class="card">
+        <h3>WhatsApp</h3>
+        <p><a href="https://wa.me/551598457544" target="_blank" rel="noopener">+55 15 98457-544</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA final -->
+  <section>
+    <div class="cta-band">
+      <div>
+        <h2>Quer divulgar ou convidar para parceria?</h2>
+        <p>Me chame no WhatsApp ou envie um e-mail. Eu respondo com rapidez e clareza.</p>
+      </div>
+      <div style="display:flex; gap:12px; flex-wrap:wrap;">
+        <a class="cta" href="https://wa.me/551598457544" target="_blank" rel="noopener">WhatsApp</a>
+        <a class="cta secondary" href="mailto:teacher_esl@hotmail.com">E-mail</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  © 2026 – English Flow | Professor Vinícius<br/>Conteúdo informativo e educacional
+</footer>
+
+</body>
+</html>

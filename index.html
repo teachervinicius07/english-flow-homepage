@@ -146,43 +146,29 @@
     .cta-band h3{ margin:0; color:#fff; font-size: 1.8rem; }
     .cta-band p{ margin: 6px 0 0; color: rgba(219,234,254,0.9); max-width: 70ch; }
 
-    .logo-img{
-      display: block;           /* remove “baseline gap” do inline */
-      height: 42px;             /* ajuste */
-      width: auto;
-      filter: drop-shadow(0.2px 0.2px 0px #1e88c9) 
-          drop-shadow(-0.2px -0.2px 0px #1e88c9)
-          drop-shadow(0.2px -0.2px 0px #1e88c9)
-          drop-shadow(-0.2px 0.2px 0px #1e88c9);
-    }
-
-    .logo-link{
-      display: inline-flex;     /* ou inline-block */
-      align-items: center;
-      cursor: hand cursor;
-      position: relative; 
-      z-index: 2000;
-    }
-
   </style>
 </head>
 <body>
 
 <nav>
   <div class="nav-container">
-    <div style="position:relative; z-index:2;">
-      </div>
+    <div class="nav-wrapper" style="position:relative; z-index:2;">
+      
+      <div class="logo-area">
         <a class="logo-link" href="index.html" aria-label="Voltar para o início">
-          <img src="images/logo.png" alt="English Flow Logo" class="logo-img" style="max-width:300px" ; />
+          <img src="images/logo.png" alt="English Flow Logo" class="logo-img" style="max-width:280px;" />
         </a>
-      <div>
-    
-      <a href="index.html">Início</a>
-      <a href="planos.html">Planos</a>
-      <a href="sobre.html">Sobre Nós</a>
-      <a href="dicas.html">Dicas</a>
-      <a href="teste-nivel.html">Teste de Nível</a>
-      <a href="contato.html" class="cta">Contato</a>
+      </div>
+
+      <div class="links-area">
+        <a href="index.html">Início</a>
+        <a href="planos.html">Planos</a>
+        <a href="sobre.html">Sobre Nós</a>
+        <a href="dicas.html">Dicas</a>
+        <a href="teste-nivel.html">Teste de Nível</a>
+        <a href="contato.html" class="cta">Contato</a>
+      </div>
+
     </div>
   </div>
 </nav>
@@ -191,7 +177,7 @@
   <!-- 1) Video Header -->
   <script src="js/video.js" defer></script>
   <video id="heroVideo" class="hero-video" autoplay muted loop playsinline>
-    <source src="videos/english_flow_header.mp4" type="video/mp4">
+    <source src="videos/english_flow_header.mp4#t=7" type="video/mp4">
   </video>
 
   <section class="sectionheader">
@@ -216,8 +202,7 @@
         <a href="teste-nivel.html" class="cta">Fazer teste de nível</a>
       </div>
     </div>
-  </sectionheader>
-
+  </section>
 </header>
 
 <!-- 1) Isso é para quem? -->
