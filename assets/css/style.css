@@ -1,307 +1,155 @@
-/* DEFINIÇÃO DE PALETTE GLOBAL */
+/* ============================================================
+   1. CONFIGURAÇÕES GLOBAIS E VARIÁVEIS
+   ============================================================ */
 :root {
-  /* Azul claro – fundos suaves, muito próximo ao brilho do logo */
   --blue: #dff3fb;
-
-  /* Azul vivo – movimentos, hovers, barras, destaques */
   --blue-strong: #3fb3e6;
-
-  /* Azul principal da marca – CTA, headers, links */
   --blue-deep: #1e88c9;
-
-  /* Cinza frio levemente azulado – texto secundário */
   --gray: #4a6476;
-
-  /* Fundo geral – branco frio */
   --light-gray: #f5f9fc;
-
-  /* Branco puro */
   --white: #ffffff;
+  --dark-text: #1f2937;
 }
 
-/* NAVEGAÇÃO GERAL DE TODAS AS PÁGINAS */
-nav {
-  position: sticky; top: 0; z-index: 1000;
-  background: rgba(255,255,255,0.95);
-  backdrop-filter: blur(8px);
-  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+* { 
+  box-sizing: border-box; 
+  margin: 0; 
+  padding: 0; 
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
 }
-nav .nav-container {
-  max-width: 1100px; margin: auto; padding: 14px 20px;
-  display: flex; justify-content: space-between; align-items: center;
-}
-nav a { text-decoration: none; color: var(--gray); font-weight: 500; margin-left: 20px; }
-nav a:hover { color: var(--blue-deep); }
 
-/* HEADER GERAL DE TODAS AS PÁGINAS */
-header {
-  background: linear-gradient(135deg, var(--blue), var(--blue-deep));
-  padding: 100px 20px;
-  text-align: center;
-  height: 85vh;
+body { 
+  background-color: var(--light-gray); 
+  color: var(--dark-text); 
+  line-height: 1.6; 
+}
+
+/* ============================================================
+   2. COMPONENTES REUTILIZÁVEIS (Cards, Grids, Botões)
+   ============================================================ */
+section {
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+.grid { 
+  display: grid; 
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+  gap: 26px; 
+}
+
+.card {
+  background: var(--white);
+  padding: 34px;
+  border-radius: 22px;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.06);
+  transition: transform 0.3s ease;
+}
+
+.card:hover { transform: translateY(-5px); }
+
+/* Botões e CTAs */
+.cta {
+  display: inline-block;
+  background-color: var(--blue-deep);
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 700;
+  transition: 0.2s;
+}
+
+.cta:hover { background-color: var(--blue-strong); }
+
+.cta.secondary {
+  background-color: rgba(255,255,255,0.2);
+  border: 1px solid #fff;
+}
+
+/* Elementos de Texto */
+.kicker {
+  display: inline-block;
+  font-weight: 800;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  font-size: .78rem;
+  color: rgba(15,23,42,0.65);
+  background: rgba(255,255,255,0.55);
+  border: 1px solid rgba(15,23,42,0.08);
+  padding: 8px 12px;
+  border-radius: 999px;
+  margin-bottom: 14px;
+}
+
+.muted { color: var(--gray); }
+
+/* ============================================================
+   3. ESTILOS ESPECÍFICOS DO HEADER DINÂMICO
+   ============================================================ */
+.hero-header {
   position: relative;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  background-color: var(--blue-deep); /* Fallback */
   overflow: hidden;
 }
 
-header h1 { font-size: 3rem; margin: 14px 0 10px; }
-header h2 { font-weight: 400; color: var(--light-gray); margin-bottom: 26px; }
-
-section { padding: 50px 20px; max-width: 1100px; margin: auto; }
-section h3 { font-size: 2.2rem; margin-bottom: 22px; }
-
-/* VIDEO HEADER DE TODAS AS PÁGINAS */
 .hero-video {
   position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 180%;
-  opacity: 0.9;
-  filter: brightness(90%);
+  top: 50%; left: 50%;
+  min-width: 100%; min-height: 100%;
+  width: auto; height: auto;
+  transform: translate(-50%, -50%);
+  z-index: 0;
   object-fit: cover;
 }
 
-
-
-/* --- Navegação --- */
-.nav-wrapper {
-    position: relative;
-    z-index: 2;
-}
-
-.logo-img {
-    max-width: 280px;
-}
-
-/* --- Header e Hero --- */
-.hero-header {
-    position: relative;
-    overflow: hidden;
-}
-
-.hero-logo-wrapper {
-    position: relative;
-    z-index: 2;
-}
-
-.hero-logo-secondary {
-    max-width: 200px;
-    margin-bottom: 0;
-}
-
 .hero-content {
-    position: relative;
-    z-index: 2;
-    text-align: center;
-    margin: 0 auto;
-}
-
-/* --- Alinhamentos Flexbox --- */
-.mini-badges {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-}
-
-.hero-actions {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-top: 20px;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* O segredo está aqui: o wrapper vira um flexbox */
-.nav-wrapper {
-  display: flex;
-  justify-content: space-between; /* Empurra um para cada lado */
-  align-items: center;            /* Alinha verticalmente no meio */
-  width: 100%;
-  max-width: 1100px;              /* Mantendo seu padrão de largura */
-  margin: 0 auto;
-  padding: 10px 20px;
-}
-
-/* Espaçamento entre os links da direita */
-.links-area a {
-  margin-left: 20px;
-  text-decoration: none;
-  color: inherit; /* Mantém a cor que você já definiu */
-  font-size: 16px;
-}
-
-.logo-img{
-  display: block;           /* remove “baseline gap” do inline */
-  width: auto;
-  position: relative; top: 0px; right: 50px;
-  filter: drop-shadow(0.2px 0.2px 0px #1e88c9) 
-      drop-shadow(-0.2px -0.2px 0px #1e88c9)
-      drop-shadow(0.2px -0.2px 0px #1e88c9)
-      drop-shadow(-0.2px 0.2px 0px #1e88c9);
-}
-
-.logo-link{
-  display: inline-flex;     /* ou inline-block */
-  align-items: center;
-  cursor: hand cursor;
-  position: relative; 
-  z-index: 2000;
-}
-
-
-
-
-/* FOOTER GERAL DE TODAS AS PÁGINAS */
-footer {
-  background: linear-gradient(135deg, var(--blue), var(--blue-deep));
-  padding: 100px 20px;
-  text-align: center;
-}
-
-/* BOTÕES DE TODAS AS PÁGINAS */
-.cta {
-  background: linear-gradient(200deg, var(--blue-deep), var(--blue));
-  color: var(--white) !important;
-  padding: 12px 26px;
-  border-radius: 30px;
-  font-weight: 700;
-  border: none;
-  cursor: pointer;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  box-shadow: 0 14px 30px rgba(0,0,0,0.12);
-}
-
-.cta:hover { filter: brightness(0.98); transform: translateY(-1px); transition: .15s ease; }
-
-.cta.secondary {
-  background: rgba(255,255,255,0.85);
-  color: #0f172a !important;
-  border: 1px solid rgba(15,23,42,0.12);
-  box-shadow: 0 14px 30px rgba(0,0,0,0.08);
-}
-
-
-/* Cursor quando passa em links e botões */
-a,
-button,
-.btn,
-input[type="submit"] {
-  cursor: url("images/cursor-default.gif") 16 16, pointer;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* ===== HERO - PARALLAX ===== */
-
-.hero {
   position: relative;
-  height: 200vh; /* scroll para o parallax acontecer */
-}
-
-.scene {
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  overflow: hidden;
-}
-
-/* ===== BASE IMAGE ===== */
-
-.base {
-  position: absolute;
-  inset: 0;
-  background-image: url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=2000&q=80");
-  background-size: cover;
-  background-position: center;
-  z-index: 1;
-}
-
-/* overlay suave */
-.base::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to bottom, rgba(0,0,0,.3), rgba(0,0,0,.65));
-}
-
-/* ===== PARALLAX LAYERS ===== */
-
-.layer {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  will-change: transform;
-}
-
-.layer img {
-  position: absolute;
-  width: 260px;
-  opacity: 1;
-  filter: drop-shadow(0 30px 40px rgba(0,0,0,.4));
-}
-
-/* Distâncias visuais */
-.layer-back img  { top: 20%; left: 10%; }
-.layer-mid img   { top: 0%; right: 0%; width: 1980px; }
-.layer-front img { bottom: -90%; left: 0%; width: 1980px; }
-
-.layer-back  { z-index: 2; }
-.layer-mid   { z-index: 3; }
-.layer-front { z-index: 4; }
-
-/* ===== TEXT ===== */
-
-.hero-text {
-  position: absolute;
-  z-index: 5;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  z-index: 2;
   text-align: center;
-  max-width: 700px;
-  padding: 32px;
+  padding: 20px;
 }
 
-.hero-text h1 {
-  font-size: clamp(2.5rem, 6vw, 4rem);
-  margin-bottom: 16px;
+.hero-sub {
+  max-width: 68ch;
+  margin: 0 auto 26px;
+  color: rgba(255,255,255,0.92);
+  font-size: 1.25rem;
 }
 
-.hero-text p {
-  font-size: 1.2rem;
-  opacity: 0.9;
+/* ============================================================
+   4. ESTILOS DE PÁGINAS ESPECÍFICAS (Blog, Teste, Contato)
+   ============================================================ */
+/* Feed/Blog (dicas.html) */
+.input {
+  width: min(420px, 100%);
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1px solid #d1d5db;
+  outline: none;
+}
+
+/* Teste de Nível */
+.options label {
+  display: block;
+  background: #fff;
+  padding: 12px;
+  margin: 8px 0;
+  border-radius: 10px;
+  cursor: pointer;
+  border: 1px solid #e5e7eb;
+}
+
+/* Rodapé */
+footer {
+  text-align: center;
+  padding: 40px;
+  color: var(--gray);
+  font-size: 0.9rem;
 }

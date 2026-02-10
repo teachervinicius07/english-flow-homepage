@@ -1,133 +1,16 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <link rel="stylesheet" href="assets/css/style.css">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Teste de Nível – English Flow</title>
-  <link rel="stylesheet" href="css/style.css">
-  <style>
-
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-    body { background-color: var(--light-gray); color: #1f2937; line-height: 1.6; }
-
-    nav {
-      position: sticky; top: 0; z-index: 1000;
-      background: rgba(255,255,255,0.95);
-      backdrop-filter: blur(8px);
-      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
-    }
-
-    nav .nav-container {
-      max-width: 1100px; margin: auto; padding: 14px 20px;
-      display: flex; justify-content: space-between; align-items: center;
-    }
-
-    nav a { text-decoration: none; color: var(--gray); font-weight: 500; margin-left: 20px; }
-    nav a:hover { color: var(--blue-deep); }
-
-    .cta {
-      background-color: var(--blue-deep);
-      color: var(--white) !important;
-      padding: 12px 26px;
-      border-radius: 30px;
-      font-weight: 600;
-      border: none;
-      cursor: pointer;
-    }
-
-    header h1 { font-size: 2.6rem; margin-bottom: 10px; }
-    header h2 { font-weight: 400; color: var(--light-gray); }
-
-    section { padding: 90px 20px; max-width: 1000px; margin: auto; }
-
-    .card {
-      background: var(--white);
-      padding: 40px;
-      border-radius: 24px;
-      box-shadow: 0 16px 36px rgba(0,0,0,0.08);
-    }
-
-    .progress-wrapper { margin-bottom: 30px; }
-    .progress-label { display: flex; justify-content: space-between; font-size: 0.9rem; margin-bottom: 6px; }
-    .progress-bar-bg { background: #e5e7eb; border-radius: 10px; overflow: hidden; }
-    .progress-bar { height: 10px; width: 0%; background: var(--blue-strong); transition: width .3s ease; }
-
-    #questionContainer h3{
-      font-size: 1.6rem;
-      margin-bottom: 18px;
-      line-height: 1.25;
-    }
-
-    .options{
-      margin-top: 18px;
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
-
-    .options label{
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 14px 16px;
-      border-radius: 14px;
-      border: 1px solid #e5e7eb;
-      background: #ffffff;
-      cursor: pointer;
-      transition: .15s ease;
-    }
-
-    .options label:hover{
-      border-color: var(--blue-strong);
-      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
-    }
-
-    .options input[type="radio"]{
-      width: 18px;
-      height: 18px;
-      flex: 0 0 auto;
-    }
-
-    .options span{
-      font-size: 1.05rem;
-    }
-
-    /* Ajustes de escala / legibilidade */
-    section { padding: 90px 20px; max-width: 1100px; margin: auto; }
-    .card { max-width: 860px; margin: auto; padding: 54px; }
-
-    @media (max-width: 640px){
-      header{ padding: 70px 18px; }
-      header h1{ font-size: 2.1rem; }
-      .card{ padding: 28px; }
-      #questionContainer h3{ font-size: 1.35rem; }
-      .options label{ padding: 12px 14px; }
-      .options span{ font-size: 1rem; }
-    }
-
-  </style>
 </head>
+
 <body>
-
-<nav>
-  <div class="nav-container">
-    <strong>English Flow</strong>
-    <div>
-      <a href="index.html">Início</a>
-      <a href="planos.html">Planos</a>
-      <a href="sobre.html">Sobre Nós</a>
-      <a href="dicas.html">Dicas</a>
-      <a href="teste-nivel.html">Teste de Nível</a>
-      <a href="contato.html" class="cta">Contato</a>
-    </div>
-  </div>
-</nav>
-
-<header>
-  <h1>Teste de Nível de Inglês</h1>
-  <h2>Avaliação rápida e indicativa do A1 ao C2</h2>
-</header>
+  <!-- HEADER E NAVIGATION BAR -->
+  <div id="header-placeholder"></div>
 
 <section>
   <div class="card">
@@ -222,5 +105,8 @@ function showResult() {
 renderQuestion();
 </script>
 
+<!-- FOOTER -->
+<div id="footer-placeholder"></div>
+<script src="assets/js/main.js"></script>
 </body>
 </html>
