@@ -1,43 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+  <link rel="stylesheet" href="assets/css/style.css">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>English Flow – Professor Vinícius</title>
-  <link rel="stylesheet" href="css/style.css">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
     body { background-color: var(--light-gray); color: #1f2937; line-height: 1.6; }
-
-    /* NAVEGAÇÃO GERAL DE TODAS AS PÁGINAS */
-    nav {
-      position: sticky; top: 0; z-index: 1000;
-      background: rgba(255,255,255,0.95);
-      backdrop-filter: blur(8px);
-      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
-    }
-    nav .nav-container {
-      max-width: 1100px; margin: auto; padding: 14px 20px;
-      display: flex; justify-content: space-between; align-items: center;
-    }
-    nav a { text-decoration: none; color: var(--gray); font-weight: 500; margin-left: 20px; }
-    nav a:hover { color: var(--blue-deep); }
-
-    /* HEADER GERAL DE TODAS AS PÁGINAS */
-    header {
-      background: linear-gradient(135deg, var(--blue), var(--blue-deep));
-      padding: 100px 20px;
-      text-align: center;
-      height: 85vh;
-      position: relative;
-      overflow: hidden;
-    }
-
-    header h1 { font-size: 3rem; margin: 14px 0 10px; }
-    header h2 { font-weight: 400; color: var(--light-gray); margin-bottom: 26px; }
-
-    section { padding: 50px 20px; max-width: 1100px; margin: auto; }
-    section h3 { font-size: 2.2rem; margin-bottom: 22px; }
 
     .hero-sub {
       max-width: 68ch;
@@ -149,61 +119,10 @@
   </style>
 </head>
 <body>
+  <!-- HEADER -->
+  <div id="header-placeholder"></div>
 
-<nav>
-  <div class="nav-container">
-    <div class="nav-wrapper" style="position:relative; z-index:2;">
-      
-      <div class="logo-area">
-        <a class="logo-link" href="index.html" aria-label="Voltar para o início">
-          <img src="images/logo.png" alt="English Flow Logo" class="logo-img" style="max-width:280px;" />
-        </a>
-      </div>
 
-      <div class="links-area">
-        <a href="index.html">Início</a>
-        <a href="planos.html">Planos</a>
-        <a href="sobre.html">Sobre Nós</a>
-        <a href="dicas.html">Dicas</a>
-        <a href="teste-nivel.html">Teste de Nível</a>
-        <a href="contato.html" class="cta">Contato</a>
-      </div>
-
-    </div>
-  </div>
-</nav>
-
-<header>
-  <!-- 1) Video Header -->
-  <script src="js/video.js" defer></script>
-  <video id="heroVideo" class="hero-video" autoplay muted loop playsinline>
-    <source src="videos/english_flow_header.mp4#t=7" type="video/mp4">
-  </video>
-
-  <section class="sectionheader">
-    <div style="position:relative; z-index:2;">
-      <img src="images/logo2.png" alt="English Flow Logo" style="max-width:200px; margin-bottom:0px;" />
-    </div>
-
-    <div style="position:relative; z-index:2; text-align:center; margin: 0 auto;">
-      <h1>Fluência no inglês para sua carreira.</h1>
-      <p class="hero-sub";>
-        Aulas curtas e objetivas para profissionais ocupados. Construa gramática e conversação com clareza, agilidade e eficiência.
-      </p>
-
-      <div class="mini" style="justify-content:center;">
-        <span>Cambridge C1</span>
-        <span>Adultos • Brasil & Portugal</span>
-        <span>Aulas 30 min</span>
-      </div>
-
-      <div class="hero-actions" style="justify-content:center;">
-        <a href="contato.html" class="cta secondary">Falar comigo</a>
-        <a href="teste-nivel.html" class="cta">Fazer teste de nível</a>
-      </div>
-    </div>
-  </section>
-</header>
 
 <!-- 1) Isso é para quem? -->
 <section>
@@ -360,9 +279,10 @@
   </div>
 </section>
 
-<footer>
-  © 2026 – English Flow | Professor Vinícius<br/>Todos os direitos reservados
-</footer>
+<!-- FOOTER -->
+<div id="footer-placeholder"></div>
+  
+<script src="assets/js/main.js"></script>
 
 </body>
 </html>
