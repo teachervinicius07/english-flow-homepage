@@ -100,31 +100,21 @@ nav a:hover { color: var(--blue-deep); }
    4. BOTÕES GERAIS (CTAs)
 ========================================= */
 .cta {
-  /* Gradiente mais vivo e com brilho */
-  background: linear-gradient(135deg, #3fb3e6, #1e88c9) !important;
-  color: #fff !important;
-  padding: 14px 28px;
-  border-radius: 50px;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  box-shadow: 0 8px 20px rgba(30, 136, 201, 0.4); /* Sombra colorida dá profundidade */
-  transition: all 0.3s ease;
-  border: none;
+  display: inline-block;
+  background-color: var(--blue-deep);
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 700;
+  transition: 0.2s;
 }
 
-.cta:hover {
-  transform: translateY(-3px) scale(1.05); /* Pulsa levemente ao passar o mouse */
-  box-shadow: 0 12px 25px rgba(30, 136, 201, 0.6);
-  filter: brightness(1.1);
-}
+.cta:hover { background-color: var(--blue-strong); }
 
-/* Estilo para o botão secundário (Teste de Nível) não brigar com o principal */
 .cta.secondary {
-  background: transparent !important;
-  border: 2px solid #ffffff;
-  box-shadow: none;
-  backdrop-filter: blur(5px);
+  background-color: rgba(255,255,255,0.2);
+  border: 1px solid #fff;
 }
 
 .cta.secondary:hover {
