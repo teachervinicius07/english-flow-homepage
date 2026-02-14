@@ -109,7 +109,7 @@ nav a:hover { color: var(--blue-deep); }
 .hero-section.lean {
   min-height: 30vh; /* Altura bem menor */
   padding: 40px 20px;
-  background: linear-gradient(135deg, var(--blue-deep), var(--blue-strong));
+  background: linear-gradient(135deg, var(--blue), var(--blue-deep));
 }
 
 .hero-section.lean #video-container,
@@ -141,7 +141,7 @@ nav a:hover { color: var(--blue-deep); }
 ========================================= */
 .cta {
   display: inline-block;
-  background-color: var(--blue-deep);
+  background-color: linear-gradient(135deg, var(--blue), var(--blue-strong));
   color: #fff;
   padding: 12px 24px;
   border-radius: 999px;
@@ -153,7 +153,7 @@ nav a:hover { color: var(--blue-deep); }
 .cta:hover { background-color: var(--blue-strong); }
 
 .cta.secondary {
-  background-color: rgba(255,255,255,0.2);
+  background-color: linear-gradient(135deg, var(--blue), var(--blue-deep));
   border: 1px solid #fff;
 }
 
