@@ -6,6 +6,64 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Planos – English Flow</title>
+  <style>
+
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+    body { background-color: var(--light-gray); color: #1f2937; line-height: 1.6; }
+
+    nav {
+      position: sticky; top: 0; z-index: 1000;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    }
+
+    nav .nav-container {
+      max-width: 1100px; margin: auto; padding: 14px 20px;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+
+    nav a { text-decoration: none; color: var(--gray); font-weight: 500; margin-left: 20px; }
+    nav a:hover { color: var(--blue-deep); }
+
+    .cta {
+      background-color: var(--blue-deep);
+      color: var(--white) !important;
+      padding: 12px 26px;
+      border-radius: 30px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+    }
+
+    section { padding: 90px 20px; max-width: 1100px; margin: auto; }
+    section h3 { font-size: 2.2rem; margin-bottom: 25px; }
+
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+
+    .card {
+      background: var(--white);
+      padding: 40px;
+      border-radius: 26px;
+      box-shadow: 0 16px 36px rgba(0,0,0,0.08);
+      position: relative;
+    }
+
+    .highlight {
+      border: 3px solid var(--blue-deep);
+      transform: scale(1.02);
+    }
+
+    ul { margin-top: 20px; padding-left: 18px; }
+    li { margin-bottom: 10px; }
+
+    .price { font-size: 2rem; color: var(--blue-deep); margin: 20px 0; }
+    .badge {
+      position: absolute; top: -14px; right: 20px;
+      background: var(--blue-deep); color: white;
+      padding: 6px 14px; border-radius: 20px; font-size: 0.8rem;
+    }
+  </style>
 </head>
 
 <body>
