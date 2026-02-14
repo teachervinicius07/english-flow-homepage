@@ -1,26 +1,34 @@
 function carregarComponentes() {
-    // Descobre se estamos em uma subpasta para ajustar o caminho
-    const pathPrefix = window.location.pathname.includes('/pages/') ? '../' : '';
+    // 1. Detecta o ambiente (GitHub Pages vs Local)
+    const isGitHub = window.location.hostname.includes('github.io');
+    const repoName = '/english-flow-homepage/';
+    
+    // 2. Define a base: se estiver no GitHub, usa o nome do repo. Se local, usa raiz.
+    const base = isGitHub ? repoName : '/';
 
-    fetch(pathPrefix + 'components/header.html') 
+    // 3. Carregar Header
+    fetch(base + 'components/header.html')
         .then(response => {
-            if (!response.ok) throw new Error('Erro ao carregar o header');
+            if (!response.ok) throw new Error(`Header não encontrado em: ${base}components/header.html`);
             return response.text();
         })
         .then(data => {
-            document.getElementById('header-placeholder').innerHTML = data;
+            const headerEl = document.getElementById('header-placeholder');
+            if (headerEl) headerEl.innerHTML = data;
         })
-        .catch(err => console.error(err));
+        .catch(err => console.error('Erro ao carregar o header:', err));
 
-    fetch(pathPrefix + 'components/footer.html')
+    // 4. Carregar Footer
+    fetch(base + 'components/footer.html')
         .then(response => {
-            if (!response.ok) throw new Error('Erro ao carregar o footer');
+            if (!response.ok) throw new Error(`Footer não encontrado em: ${base}components/footer.html`);
             return response.text();
         })
         .then(data => {
-            document.getElementById('footer-placeholder').innerHTML = data;
+            const footerEl = document.getElementById('footer-placeholder');
+            if (footerEl) footerEl.innerHTML = data;
         })
-        .catch(err => console.error(err));
+        .catch(err => console.error('Erro ao carregar o footer:', err));
 }
 
 window.onload = carregarComponentes;
