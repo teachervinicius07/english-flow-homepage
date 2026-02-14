@@ -83,8 +83,15 @@ nav a:hover { color: var(--blue-deep); }
   display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-bottom: 25px;
 }
 .mini-badges span {
-  background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3);
-  padding: 6px 16px; border-radius: 999px; font-weight: 600; font-size: 0.9rem;
+  background: rgba(255, 255, 255, 0.1); /* Fundo quase invisível */
+  border: 1px solid rgba(255, 255, 255, 0.4); /* Borda sutil */
+  padding: 4px 12px;
+  border-radius: 4px; /* Quadrado levemente arredondado tira o aspecto de "botão" */
+  font-size: 0.85rem;
+  text-transform: uppercase; /* Dá um ar de etiqueta oficial */
+  letter-spacing: 1px;
+  backdrop-filter: blur(4px);
+  color: #fff;
 }
 
 .hero-actions { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
