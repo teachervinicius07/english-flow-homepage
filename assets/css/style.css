@@ -10,174 +10,131 @@
   --white: #ffffff;
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
 
-body {
-  background-color: var(--light-gray);
-  color: #1f2937;
-  line-height: 1.6;
-}
+body { background-color: var(--light-gray); color: #1f2937; line-height: 1.6; }
+
+a, button, input[type="submit"] { cursor: pointer; }
 
 /* =========================================
-   2. NAVEGAÇÃO E HEADER GLOBAL (O mais crítico)
+   2. NAVEGAÇÃO E LOGO (Blindado)
 ========================================= */
 nav {
-  position: sticky; 
-  top: 0; 
-  z-index: 1000;
+  position: sticky; top: 0; z-index: 1000;
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(8px);
   box-shadow: 0 4px 16px rgba(0,0,0,0.06);
 }
 
 nav .nav-container {
-  max-width: 1100px; 
-  margin: auto; 
-  padding: 14px 20px;
-  display: flex; 
-  justify-content: space-between; 
-  align-items: center;
+  max-width: 1100px; margin: auto; padding: 14px 20px;
+  display: flex; justify-content: space-between; align-items: center;
 }
 
-/* Proteção para o Logotipo não explodir de tamanho */
-nav .logo img,
-.nav-container img {
-  max-height: 45px; /* Ajuste a altura ideal do seu logo aqui */
-  width: auto;
+nav .logo img {
+  max-width: 200px; /* Impede o logo de ficar gigante */
   display: block;
+  filter: drop-shadow(0.2px 0.2px 0px #1e88c9) drop-shadow(-0.2px -0.2px 0px #1e88c9);
 }
 
-nav .nav-links {
-  display: flex;
-  align-items: center;
-}
+nav .nav-links { display: flex; align-items: center; }
 
 nav a {
-  text-decoration: none; 
-  color: var(--gray); 
-  font-weight: 500; 
-  margin-left: 20px; 
-  transition: color 0.3s ease;
+  text-decoration: none; color: var(--gray); font-weight: 500; 
+  margin-left: 20px; transition: color 0.3s ease;
 }
 
-nav a:hover {
-  color: var(--blue-deep);
-}
+nav a:hover { color: var(--blue-deep); }
 
 /* =========================================
-   3. HERO SECTION (HOME - Vídeo e Imagem)
+   3. HERO SECTION (Header de Vídeo)
 ========================================= */
-/* Classes específicas para não afetar outras páginas */
 .hero-section {
   position: relative;
-  min-height: 80vh; /* Ocupa 80% da tela */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  overflow: hidden;
-  color: var(--white);
-  padding: 20px;
+  min-height: 85vh;
+  display: flex; align-items: center; justify-content: center;
+  text-align: center; overflow: hidden; color: var(--white); padding: 20px;
 }
 
-.hero-video-bg, 
-.hero-img-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* Garante que o vídeo/imagem preencha a tela sem distorcer */
-  z-index: -2;
+.hero-video-bg {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  object-fit: cover; z-index: -2;
 }
 
 .hero-overlay {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.7)); /* Escurece o vídeo para o texto aparecer */
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(15, 23, 42, 0.65); /* Escurece o vídeo para ler o texto */
   z-index: -1;
 }
 
+.hero-content { position: relative; z-index: 1; max-width: 800px; margin: auto; }
+
+.hero-logo-secondary { max-width: 200px; margin-bottom: 20px; }
+
+.hero-content h1 { font-size: 3rem; margin-bottom: 15px; line-height: 1.2; }
+
 .hero-sub {
-  max-width: 68ch;
-  margin: 0 auto 26px;
-  color: rgba(255,255,255,0.92);
-  font-size: 1.25rem;
+  font-size: 1.25rem; color: rgba(255,255,255,0.92); 
+  margin-bottom: 25px; max-width: 68ch; margin-left: auto; margin-right: auto;
 }
+
+/* Badges (Ex: Cambridge C1) */
+.mini-badges {
+  display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-bottom: 25px;
+}
+.mini-badges span {
+  background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3);
+  padding: 6px 16px; border-radius: 999px; font-weight: 600; font-size: 0.9rem;
+}
+
+.hero-actions { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
 
 /* =========================================
-   4. COMPONENTES GERAIS (Cards, Botões)
+   4. BOTÕES GERAIS (CTAs)
 ========================================= */
-section { 
-  padding: 90px 20px; 
-  max-width: 1100px; 
-  margin: auto; 
+.cta {
+  background: linear-gradient(200deg, var(--blue-deep), var(--blue-strong));
+  color: var(--white) !important; padding: 12px 26px; border-radius: 30px;
+  font-weight: 700; border: none; text-decoration: none;
+  display: inline-flex; align-items: center; justify-content: center;
+  box-shadow: 0 14px 30px rgba(0,0,0,0.12); transition: 0.2s ease;
 }
+.cta:hover { transform: translateY(-2px); filter: brightness(1.05); }
 
-.grid { 
-  display: grid; 
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
-  gap: 26px; 
+.cta.secondary {
+  background: transparent; color: var(--white) !important;
+  border: 2px solid var(--white); box-shadow: none;
 }
+.cta.secondary:hover { background: rgba(255,255,255,0.1); }
+
+/* =========================================
+   5. COMPONENTES DE PÁGINAS GERAIS
+========================================= */
+section { padding: 90px 20px; max-width: 1100px; margin: auto; }
+section h3 { font-size: 2.2rem; margin-bottom: 25px; }
+
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
 
 .card {
-  background: var(--white);
-  padding: 34px;
-  border-radius: 22px;
-  box-shadow: 0 12px 28px rgba(0,0,0,0.06);
-}
-
-.cta {
-  display: inline-block;
-  background: linear-gradient(200deg, var(--blue-deep), var(--blue-strong));
-  color: var(--white) !important;
-  padding: 12px 26px;
-  border-radius: 30px;
-  text-decoration: none;
-  font-weight: bold;
-  transition: transform 0.2s, box-shadow 0.2s;
-  border: none;
-  cursor: pointer;
-}
-
-.cta:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(30, 136, 201, 0.4);
+  background: var(--white); padding: 40px; border-radius: 26px;
+  box-shadow: 0 16px 36px rgba(0,0,0,0.08); position: relative;
 }
 
 /* =========================================
-   5. RODAPÉ (Footer)
+   6. RODAPÉ (Footer)
 ========================================= */
 footer {
   background: linear-gradient(135deg, var(--blue), var(--blue-deep));
-  padding: 100px 20px;
-  text-align: center;
-  color: var(--white);
+  padding: 80px 20px; text-align: center; color: var(--white);
 }
 
 /* =========================================
-   6. RESPONSIVIDADE (Celulares)
+   7. RESPONSIVIDADE (Celular)
 ========================================= */
 @media (max-width: 768px) {
-  nav .nav-container {
-    flex-direction: column;
-    gap: 15px;
-  }
-  nav a {
-    margin-left: 10px;
-    margin-right: 10px;
-  }
-  .hero-section {
-    min-height: 60vh;
-  }
+  nav .nav-container { flex-direction: column; gap: 15px; }
+  nav .nav-links { flex-wrap: wrap; justify-content: center; gap: 10px; }
+  nav a { margin: 0; }
+  .hero-content h1 { font-size: 2.2rem; }
+  .hero-section { min-height: 70vh; }
 }
