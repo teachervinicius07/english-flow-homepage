@@ -80,18 +80,24 @@ nav a:hover { color: var(--blue-deep); }
 
 /* Badges (Ex: Cambridge C1) */
 .mini-badges {
-  display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-bottom: 25px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 25px;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 500;
 }
+
+.mini-badges span:not(:last-child)::after {
+  content: "•"; /* Adiciona um ponto entre os textos */
+  margin-left: 15px;
+  color: var(--blue-strong); /* O ponto fica com a cor da sua marca */
+}
+
 .mini-badges span {
-  background: rgba(255, 255, 255, 0.1); /* Fundo quase invisível */
-  border: 1px solid rgba(255, 255, 255, 0.4); /* Borda sutil */
-  padding: 4px 12px;
-  border-radius: 4px; /* Quadrado levemente arredondado tira o aspecto de "botão" */
-  font-size: 0.85rem;
-  text-transform: uppercase; /* Dá um ar de etiqueta oficial */
-  letter-spacing: 1px;
-  backdrop-filter: blur(4px);
-  color: #fff;
+  background: none;
+  border: none;
+  padding: 0;
 }
 
 .hero-actions { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
