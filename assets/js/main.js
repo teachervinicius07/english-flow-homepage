@@ -1,34 +1,44 @@
 function carregarComponentes() {
-    // 1. Detecta o ambiente (GitHub Pages vs Local)
     const isGitHub = window.location.hostname.includes('github.io');
     const repoName = '/english-flow-homepage/';
     
-    // 2. Define a base: se estiver no GitHub, usa o nome do repo. Se local, usa raiz.
-    const base = isGitHub ? repoName : '/';
+    // 1. Define a base do repositório (apenas para GitHub)
+    const baseRepo = isGitHub ? repoName : '/';
 
-    // 3. Carregar Header
-    fetch(base + 'components/header.html')
+    // 2. Verifica se o ficheiro atual está dentro da pasta 'pages'
+    // Se estiver, precisamos de '../' para voltar à raiz antes de buscar components
+    const isInsidePages = window.location.pathname.includes('/pages/');
+    const pathPrefix = isInsidePages ? '../' : '';
+
+    // 3. O caminho final combina a base do repo (se houver) com o prefixo de subpasta
+    // No GitHub, em /pages/, o caminho será: /english-flow-homepage/components/...
+    // No Local, em /pages/, o caminho será: ../components/...
+    
+    const finalPath = isGitHub ? (baseRepo + 'components/') : (pathPrefix + 'components/');
+
+    console.log("A carregar componentes de:", finalPath);
+
+    // Carregar Header
+    fetch(finalPath + 'header.html')
         .then(response => {
-            if (!response.ok) throw new Error(`Header não encontrado em: ${base}components/header.html`);
+            if (!response.ok) throw new Error('Header não encontrado');
             return response.text();
         })
         .then(data => {
-            const headerEl = document.getElementById('header-placeholder');
-            if (headerEl) headerEl.innerHTML = data;
+            document.getElementById('header-placeholder').innerHTML = data;
         })
-        .catch(err => console.error('Erro ao carregar o header:', err));
+        .catch(err => console.error(err));
 
-    // 4. Carregar Footer
-    fetch(base + 'components/footer.html')
+    // Carregar Footer
+    fetch(finalPath + 'footer.html')
         .then(response => {
-            if (!response.ok) throw new Error(`Footer não encontrado em: ${base}components/footer.html`);
+            if (!response.ok) throw new Error('Footer não encontrado');
             return response.text();
         })
         .then(data => {
-            const footerEl = document.getElementById('footer-placeholder');
-            if (footerEl) footerEl.innerHTML = data;
+            document.getElementById('footer-placeholder').innerHTML = data;
         })
-        .catch(err => console.error('Erro ao carregar o footer:', err));
+        .catch(err => console.error(err));
 }
 
 window.onload = carregarComponentes;
