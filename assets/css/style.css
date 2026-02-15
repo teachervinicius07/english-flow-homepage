@@ -75,8 +75,8 @@ nav a:hover { color: var(--blue-deep); }
   line-height: 1.2;
   color: #ffffff;
   /* Sombra estratégica: um contorno leve + uma sombra macia */
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5), 
-               0 4px 10px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5), 
+               0 10px 20px rgba(0, 0, 0, 0.3);
 }
 
 .hero-sub {
@@ -87,7 +87,7 @@ nav a:hover { color: var(--blue-deep); }
   margin-left: auto;
   margin-right: auto;
   /* Sombra um pouco mais leve que o H1 para manter a hierarquia */
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+  text-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
 }
 
 /* Badges (Ex: Cambridge C1) */
@@ -99,7 +99,7 @@ nav a:hover { color: var(--blue-deep); }
   color: rgba(255, 255, 255, 0.8);
   font-weight: 500;
   backdrop-filter: blur(8px); /* Vidro fosco ajuda muito na leitura */
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  text-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
 }
 
 .mini-badges span:not(:last-child)::after {
