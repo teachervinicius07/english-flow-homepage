@@ -62,20 +62,32 @@ nav a:hover { color: var(--blue-deep); }
 }
 
 .hero-overlay {
-  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-  background: rgba(15, 23, 42, 0.65); /* Escurece o vídeo para ler o texto */
-  z-index: -1;
+  display: none; /* Ou simplesmente remova o background do .hero-overlay */
 }
 
 .hero-content { position: relative; z-index: 1; max-width: 800px; margin: auto; }
 
 .hero-logo-secondary { max-width: 200px; margin-bottom: 20px; }
 
-.hero-content h1 { font-size: 3rem; margin-bottom: 15px; line-height: 1.2; }
+.hero-content h1 {
+  font-size: 3rem;
+  margin-bottom: 15px;
+  line-height: 1.2;
+  color: #ffffff;
+  /* Sombra estratégica: um contorno leve + uma sombra macia */
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5), 
+               0 4px 10px rgba(0, 0, 0, 0.3);
+}
 
 .hero-sub {
-  font-size: 1.25rem; color: rgba(255,255,255,0.92); 
-  margin-bottom: 25px; max-width: 68ch; margin-left: auto; margin-right: auto;
+  font-size: 1.25rem;
+  color: #ffffff;
+  margin-bottom: 25px;
+  max-width: 68ch;
+  margin-left: auto;
+  margin-right: auto;
+  /* Sombra um pouco mais leve que o H1 para manter a hierarquia */
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
 }
 
 /* Badges (Ex: Cambridge C1) */
@@ -86,6 +98,8 @@ nav a:hover { color: var(--blue-deep); }
   margin-bottom: 25px;
   color: rgba(255, 255, 255, 0.8);
   font-weight: 500;
+  backdrop-filter: blur(8px); /* Vidro fosco ajuda muito na leitura */
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 .mini-badges span:not(:last-child)::after {
