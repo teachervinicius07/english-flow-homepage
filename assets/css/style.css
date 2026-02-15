@@ -102,9 +102,10 @@ nav a:hover { color: var(--blue-deep); }
   justify-content: center;
   gap: 15px;
   margin-bottom: 25px;
-  color: rgba(255, 255, 255, 0.8);
-  font-weight: 500;
-  text-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+  color: #ffffff; /* Brancos puros para brilhar mais */
+  font-weight: 600;
+  /* Como o texto é pequeno, a sombra precisa ser mais "colada" para não borrar */
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 1); 
 }
 
 .mini-badges span:not(:last-child)::after {
