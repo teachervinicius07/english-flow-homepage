@@ -74,9 +74,11 @@ nav a:hover { color: var(--blue-deep); }
   margin-bottom: 15px;
   line-height: 1.2;
   color: #ffffff;
-  /* Sombra estratégica: um contorno leve + uma sombra macia */
-  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5), 
-               0 10px 20px rgba(0, 0, 0, 0.3);
+  /* Triplo empilhamento: Contorno + Sombra de Médio Alcance + Sombra Profunda */
+  text-shadow: 
+    0 2px 5px rgba(0, 0, 0, 0.9),    /* Contorno nítido */
+    0 5px 15px rgba(0, 0, 0, 0.7),   /* Sombra de corpo */
+    0 10px 30px rgba(0, 0, 0, 0.5);  /* Profundidade extrema */
 }
 
 .hero-sub {
@@ -86,8 +88,12 @@ nav a:hover { color: var(--blue-deep); }
   max-width: 68ch;
   margin-left: auto;
   margin-right: auto;
-  /* Sombra um pouco mais leve que o H1 para manter a hierarquia */
-  text-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+  font-weight: 500; /* Um pouco mais de peso ajuda na leitura com sombra forte */
+  /* Sombra densa e espalhada */
+  text-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.9),
+    0 4px 12px rgba(0, 0, 0, 0.8),
+    0 8px 24px rgba(0, 0, 0, 0.6);
 }
 
 /* Badges (Ex: Cambridge C1) */
@@ -98,7 +104,6 @@ nav a:hover { color: var(--blue-deep); }
   margin-bottom: 25px;
   color: rgba(255, 255, 255, 0.8);
   font-weight: 500;
-  backdrop-filter: blur(8px); /* Vidro fosco ajuda muito na leitura */
   text-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
 }
 
